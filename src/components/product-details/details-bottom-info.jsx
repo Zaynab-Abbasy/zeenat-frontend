@@ -34,9 +34,9 @@ const DetailsBottomInfo = ({sku,category,tag}) => {
         <a href="#">
           <i className="fa-brands fa-linkedin-in"></i>
         </a>
-        <a href="#">
+        {/* <a href="#">
           <i className="fa-brands fa-vimeo-v"></i>
-        </a>
+        </a> */}
       </div>
 
       {/* product-details-msg */}
@@ -52,7 +52,7 @@ const DetailsBottomInfo = ({sku,category,tag}) => {
         <p>
           Guaranteed safe <br /> & secure checkout
         </p>
-        <Image src={payment_option_img} alt="payment_option_img" />
+        {/* <Image src={payment_option_img} alt="payment_option_img" /> */}
       </div>
     </>
   );

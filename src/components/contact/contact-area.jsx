@@ -35,10 +35,10 @@ const ContactArea = () => {
                     </div>
                     <div className="tp-contact-info-content">
                       <p data-info="mail">
-                        <a href="mailto:contact@shofy.com">contact@shofy.com</a>
+                        <a href="mailto:contact@shofy.com">contact@aslcosmetics.com</a>
                       </p>
                       <p data-info="phone">
-                        <a href="tel:670-413-90-762">+670 413 90 762</a>
+                        <a href="tel:+92-456-79-762">+92-456-79-762</a>
                       </p>
                     </div>
                   </div>
@@ -51,10 +51,11 @@ const ContactArea = () => {
                     <div className="tp-contact-info-content">
                       <p>
                         <a
-                          href="https://www.google.com/maps/place/New+York,+NY,+USA/@40.6976637,-74.1197638,11z/data=!3m1!4b1!4m6!3m5!1s0x89c24fa5d33f083b:0xc80b8f06e177fe62!8m2!3d40.7127753!4d-74.0059728!16zL20vMDJfMjg2"
+                          //<iframe src= width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                          href="https://www.google.com/maps/place/F-6,+Islamabad,+Islamabad+Capital+Territory/@33.7310091,73.0745199,15z/data=!3m1!4b1!4m6!3m5!1s0x38dfbf7769d89d8d:0x5d6d89877331b187!8m2!3d33.7296892!4d73.0745993!16s%2Fg%2F11gy79czt8?entry=ttu"
                           target="_blank"
                         >
-                          84 sleepy hollow st. <br /> jamaica, New York 1432
+                          Street no.1 Sector F-6 <br /> Islamabad, Pakistan
                         </a>
                       </p>
                     </div>

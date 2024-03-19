@@ -52,7 +52,7 @@ const menu_data = [
         link: '/product-details',
         mega_menus: [
           { title: 'Product Simple', link: '/product-details' },
-          { title: 'With Video', link: '/product-details-video' },
+          //{ title: 'With Video', link: '/product-details-video' },
           { title: 'With Countdown Timer', link: '/product-details-countdown' },
           { title: 'Variations Swatches', link: '/product-details-swatches' },
         ]
@@ -161,7 +161,7 @@ export const mobile_menu = [
       { title: 'Hidden Sidebar', link: '/shop-hidden-sidebar' },
       { title: 'Only Categories', link: '/shop-category' },
       { title: 'Product Simple', link: '/product-details' },
-      { title: 'With Video', link: '/product-details-video' },
+      //{ title: 'With Video', link: '/product-details-video' },
       { title: 'With Countdown Timer', link: '/product-details-countdown' },
       { title: 'Variations Swatches', link: '/product-details-swatches' },
     ],

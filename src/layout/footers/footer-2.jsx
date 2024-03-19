@@ -25,7 +25,7 @@ const FooterTwo = () => {
                     <div className="tp-footer-widget-content">
                       <div className="tp-footer-talk mb-20">
                         <span>Got Questions? Call us</span>
-                        <h4><a href="tel:670-413-90-762">+670 413 90 762</a></h4>
+                        <h4><a href="tel:+92-456-79-762">+92-456-79-762</a></h4>
                       </div>
                       <div className="tp-footer-contact">
                         <div className="tp-footer-contact-item d-flex align-items-start">
@@ -35,7 +35,7 @@ const FooterTwo = () => {
                             </span>
                           </div>
                           <div className="tp-footer-contact-content">
-                            <p><a href="mailto:shofy@support.com">shofy@mail.com</a></p>
+                            <p><a href="mailto:support@aslcosmetics.com">support@aslcosmetics.com</a></p>
                           </div>
                         </div>
                         <div className="tp-footer-contact-item d-flex align-items-start">
@@ -45,7 +45,7 @@ const FooterTwo = () => {
                             </span>
                           </div>
                           <div className="tp-footer-contact-content">
-                            <p><a href="https://www.google.com/maps/place/Sleepy+Hollow+Rd,+Gouverneur,+NY+13642,+USA/@44.3304966,-75.4552367,17z/data=!3m1!4b1!4m6!3m5!1s0x4cccddac8972c5eb:0x56286024afff537a!8m2!3d44.3304928!4d-75.453048!16s%2Fg%2F1tdsjdj4" target="_blank">79 Sleepy Hollow St. <br /> Jamaica, New York 1432</a></p>
+                            <p><a href="https://www.google.com/maps/place/F-6,+Islamabad,+Islamabad+Capital+Territory/@33.7310091,73.0745199,15z/data=!3m1!4b1!4m6!3m5!1s0x38dfbf7769d89d8d:0x5d6d89877331b187!8m2!3d33.7296892!4d73.0745993!16s%2Fg%2F11gy79czt8?entry=ttu" target="_blank">Street no.1 Sector F-6,<br /> Islamabad, Pakistan</a></p>
                           </div>
                         </div>
                       </div>
@@ -116,18 +116,18 @@ const FooterTwo = () => {
                 <div className="row align-items-center">
                   <div className="col-md-6">
                     <div className="tp-footer-copyright">
-                      <p>© {new Date().getFullYear()} All Rights Reserved  |  Next js Template by
-                        <Link href="/">ThemePure</Link>.
+                      <p>© {new Date().getFullYear()} All Rights Reserved  |  ASL Cosmetics
+                        <Link href="/">{" "}❤</Link>.
                       </p>
                     </div>
                   </div>
-                  <div className="col-md-6">
+                  {/* <div className="col-md-6">
                     <div className="tp-footer-payment text-md-end">
                       <p>
                         <Image src={pay} alt="pay" />
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

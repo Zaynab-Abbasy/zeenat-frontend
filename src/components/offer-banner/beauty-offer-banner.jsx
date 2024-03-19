@@ -7,7 +7,7 @@ import Timer from '../common/timer';
 import Link from 'next/link';
 
 const BeautyOfferBanner = () => {
-  const expiryTimestamp = new Date('2023-8-16');
+  const expiryTimestamp = new Date('2024-8-16');
   const { seconds, minutes, hours, days } = useTimer({expiryTimestamp});
   return (
     <>
@@ -19,9 +19,9 @@ const BeautyOfferBanner = () => {
                     <div className="tp-collection-thumb include-bg include-bg transition-3" 
                     style={{backgroundImage:`url(${collection_thumb.src})`}}></div>
                     <div className="tp-collection-content">
-                        <span>Cosmetics Collection</span>
+                        <span>Decor Collection</span>
                         <h3 className="tp-collection-title">
-                          <Link href="/shop">Foundation and <br/> powder brush</Link>
+                          <Link href="/shop">Tabletop Decor and <br/> Center pieces</Link>
                         </h3>
                         <div className="tp-collection-btn">
                           <Link href="/shop" className="tp-btn">
@@ -37,7 +37,7 @@ const BeautyOfferBanner = () => {
                     <div className="tp-collection-thumb has-overlay include-bg transition-3" style={{backgroundImage:`url(${collection_thumb_2.src})`}} ></div>
                     <div className="tp-collection-content-1">
                         <h3 className="tp-collection-title-1">
-                          <Link href="/shop">Tops <br/> Blouse Shirts</Link>
+                          <Link href="/shop">Wall Art and <br/> Mirrors</Link>
                         </h3>
                         <div className="tp-collection-btn-1">
                           <Link href="/shop" className="tp-link-btn-line">Shop Collection</Link>
@@ -49,7 +49,7 @@ const BeautyOfferBanner = () => {
             <div className="row justify-content-center">
               <div className="col-xl-3 col-lg-4 col-md-5">
                   <div className="tp-collection-offer-wrapper mt-20">
-                    <p>Discover our Beauty Selection <span>75% Extra Discount</span> for your...</p>
+                    <p>Discover our Decor Selection <span>75% Extra Discount</span> for your...</p>
                   </div>
               </div>
               <div className="col-xl-3 col-lg-4 col-md-5">

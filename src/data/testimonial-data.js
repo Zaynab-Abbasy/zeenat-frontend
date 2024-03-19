@@ -10,8 +10,8 @@ export const fashion_testi_data = [
     review:4,
     desc:'“ How you use the city or town name is up to you. All results may be freely used in any work.”',
     user:user_2,
-    name:'Theodore Handle',
-    designation:'CO Founder'
+    name:'Usman',
+    designation:'Scientist'
   },
   {
     id:2,
@@ -36,25 +36,25 @@ export const beauty_testi_data = [
   {
     id:1,
     review:4,
-    desc:'Suscipit tellus mauris a diam maecenas. Ut faucibus pulvinar elementum integer enim neque volutpat ac. Auctor urna nunc id cursus. Scelerisque purus semper eget duis at. Pharetra vel turpis nunc eget.',
+    desc:'ASL Cosmetics trusted Brand',
     user:user_1,
-    name:'Jake Weary',
+    name:'Haider Ali',
     designation:'CO Founder'
   },
   {
     id:2,
     review:3.5,
-    desc:'Suscipit tellus mauris a diam maecenas. Ut faucibus pulvinar elementum integer enim neque volutpat ac. Auctor urna nunc id cursus. Scelerisque purus semper eget duis at. Pharetra vel turpis nunc eget.',
+    desc:'Amazing products',
     user:user_2,
     name:'Salim Rana',
-    designation:'Web Developer'
+  designation:'Client'
   },
   {
     id:3,
     review:5,
-    desc:'Suscipit tellus mauris a diam maecenas. Ut faucibus pulvinar elementum integer enim neque volutpat ac. Auctor urna nunc id cursus. Scelerisque purus semper eget duis at. Pharetra vel turpis nunc eget.',
+    desc:'fafas',
     user:user_3,
-    name:'Selina Gomz',
-    designation:'CO Founder'
+    name:'Farhan',
+    designation:'Client'
   },
 ]

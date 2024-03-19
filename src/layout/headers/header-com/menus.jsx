@@ -16,10 +16,10 @@ import insta_6 from "@assets/img/instagram/3/instagram-6.jpg";
 
 // instagram data
 const instagram_data = [
-  { id: 1, link: "https://www.instagram.com/", img: insta_1 },
-  { id: 2, link: "https://www.instagram.com/", img: insta_3 },
-  { id: 3, link: "https://www.instagram.com/", img: insta_5 },
-  { id: 4, link: "https://www.instagram.com/", img: insta_6 },
+  { id: 1, link: "https://www.google.com/", img: insta_1 },
+  { id: 2, link: "https://www.google.com/", img: insta_3 },
+  { id: 3, link: "https://www.google.com/", img: insta_5 },
+  { id: 4, link: "https://www.gooogle.com/", img: insta_6 },
 ];
 const Menus = () => {
   const { data: products, isError, isLoading } = useGetProductTypeQuery({

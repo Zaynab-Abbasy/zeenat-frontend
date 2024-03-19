@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectFade, Pagination } from "swiper";
 // internal
-import slider_bg_1 from "@assets/img/slider/3/slider-1.jpg";
+import slider_bg_1 from "@assets/img/slider/3/slider-3.jpg";
 import slider_bg_2 from "@assets/img/slider/3/slider-2.jpg";
 import slider_bg_3 from "@assets/img/slider/3/slider-3.jpg";
 import { ArrowNext, ArrowPrev, Cosmetics, Meckoup, VeganProduct } from "@/svg";
@@ -86,14 +86,14 @@ const BeautyBanner = () => {
                 <div className="row align-items-center">
                   <div className="col-xl-6 col-lg-6 col-md-8">
                     <div className="tp-slider-content-3">
-                      <span>Winter Collection 2023</span>
+                      <span>From House to Home</span>
                       <h3 className="tp-slider-title-3">
-                        Be your kind of beauty
+                        Make Every Moment Count
                       </h3>
                       <div className="tp-slider-feature-3 d-flex flex-wrap align-items-center p-relative z-index-1 mb-15">
-                        <FeatureItem icon={<Cosmetics />} title={<>High-end <br /> Cosmetics</>} />
-                        <FeatureItem icon={<VeganProduct />} title={<>Vegan <br /> Product</>} />
-                        <FeatureItem icon={<Meckoup />} title={<>Express <br /> Make-up</>} />
+                        <FeatureItem icon={<Cosmetics />} title={<>High-end <br /> Living Room</>} />
+                        <FeatureItem icon={<VeganProduct />} title={<>Dinning <br /> Products</>} />
+                        <FeatureItem icon={<Meckoup />} title={<>Decor<br /> Essentials</>} />
                       </div>
                       <div className="tp-slider-btn-3">
                         <Link

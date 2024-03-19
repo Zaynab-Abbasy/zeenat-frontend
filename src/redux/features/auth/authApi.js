@@ -7,7 +7,7 @@ export const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     registerUser: builder.mutation({
       query: (data) => ({
-        url: "https://shofy-backend.vercel.app/api/user/signup",
+        url: "http://127.0.0.1:5000/user/signup",
         method: "POST",
         body: data,
       }),
@@ -15,7 +15,7 @@ export const authApi = apiSlice.injectEndpoints({
     // signUpProvider
     signUpProvider: builder.mutation({
       query: (token) => ({
-        url: `https://shofy-backend.vercel.app/api/user/register/${token}`,
+        url: `http://127.0.0.1:5000/user/signup/${token}`,
         method: "POST",
       }),
 
@@ -46,7 +46,7 @@ export const authApi = apiSlice.injectEndpoints({
     // login
     loginUser: builder.mutation({
       query: (data) => ({
-        url: "https://shofy-backend.vercel.app/api/user/login",
+        url: "http://127.0.0.1:5000/user/login",
         method: "POST",
         body: data,
       }),
@@ -123,31 +123,31 @@ export const authApi = apiSlice.injectEndpoints({
     // reset password
     resetPassword: builder.mutation({
       query: (data) => ({
-        url: "https://shofy-backend.vercel.app/api/user/forget-password",
-        method: "PATCH",
-        body: data,
+        url: "http://127.0.0.1:5000/user/forgot-password",
+        method: "POST",
+        body: { email: data.verifyEmail },
       }),
     }),
     // confirmForgotPassword
     confirmForgotPassword: builder.mutation({
       query: (data) => ({
-        url: "https://shofy-backend.vercel.app/api/user/confirm-forget-password",
-        method: "PATCH",
+        url: "http://127.0.0.1:5000/user/confirm-forgot-password",
+        method: "POST",
         body: data,
       }),
     }),
     // change password
     changePassword: builder.mutation({
       query: (data) => ({
-        url: "https://shofy-backend.vercel.app/api/user/change-password",
-        method: "PATCH",
+        url: "http://127.0.0.1:5000/user/reset-password",
+        method: "POST",
         body: data,
       }),
     }),
     // updateProfile password
     updateProfile: builder.mutation({
       query: ({ id, ...data }) => ({
-        url: `https://shofy-backend.vercel.app/api/user/update-user/${id}`,
+        url: `http://127.0.0.1:5000/user/update-user/${id}`,
         method: "PUT",
         body: data,
       }),
