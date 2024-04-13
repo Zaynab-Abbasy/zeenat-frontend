@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 // internal
-import featured_1 from '@assets/img/product/featured/featured-1.png';
+import featured_1 from '@assets/img/product/featured/featured-1.jpg';
 import featured_2 from '@assets/img/product/featured/featured-2.png';
 import featured_3 from '@assets/img/product/featured/featured-3.png';
 
@@ -13,22 +13,22 @@ const featured_data = [
   {
     id: 1,
     img: featured_1,
-    title: <>Matte Liquid <br /> Lipstick & Lip Liner</>,
-    subtitle: 'Molestias internos et commodi tempora dolores sapiente sed iste.',
+    title: "Rist Rocking Chair" ,
+    subtitle: 'This rocking chair is a perfect pick for creating a living room arrangement that is unique and space saving.',
     save: 72,
   },
   {
     id: 2,
     img: featured_2,
-    title: <>Crushed Liquid <br /> Lip  - Cherry Crush</>,
-    subtitle: 'Molestias internos et commodi tempora dolores sapiente sed iste.',
+    title: "Aleksandra Chair",
+    subtitle: ' Upgrade your interior style aesthetics by bringing this elegantly looking luxury lounge chair.',
     save: 98,
   },
   {
     id: 3,
     img: featured_3,
-    title: <>Mega Waterproof <br /> Concealer  - 125 Bisque</>,
-    subtitle: 'Molestias internos et commodi tempora dolores sapiente sed iste.',
+    title: "Faulkner Check Seating",
+    subtitle: 'Contemporary and stylish this checked line chair gives you the comfortable and splendid outside lounging.',
     save: 133,
   },
 ]

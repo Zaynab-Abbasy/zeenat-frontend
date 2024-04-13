@@ -36,10 +36,10 @@ export const beauty_testi_data = [
   {
     id:1,
     review:4,
-    desc:'ASL Cosmetics trusted Brand',
+    desc:'Zeenat Interior is  trusted Brand',
     user:user_1,
     name:'Haider Ali',
-    designation:'CO Founder'
+    designation:'Client'
   },
   {
     id:2,
@@ -52,7 +52,7 @@ export const beauty_testi_data = [
   {
     id:3,
     review:5,
-    desc:'fafas',
+    desc:'Completely Satisfied',
     user:user_3,
     name:'Farhan',
     designation:'Client'

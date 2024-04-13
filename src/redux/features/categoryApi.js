@@ -11,10 +11,10 @@ export const categoryApi = apiSlice.injectEndpoints({
       }),
     }),
     getShowCategory: builder.query({
-      query: () => `https://shofy-backend.vercel.app/api/category/show`
+      query: () => `http://127.0.0.1:5000/showCategory`
     }),
     getProductTypeCategory: builder.query({
-      query: (type) => `https://shofy-backend.vercel.app/api/category/show/${type}`
+      query: (type) => `http://127.0.0.1:5000/categoryshow/${type}`
     }),
   }),
 });

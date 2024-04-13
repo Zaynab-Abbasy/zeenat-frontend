@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import SEO from "@/components/seo";
 import Wrapper from "@/layout/wrapper";
 import HeaderTwo from "@/layout/headers/header-2";
@@ -11,7 +12,8 @@ import ShopFilterOffCanvas from "@/components/common/shop-filter-offcanvas";
 import ShopLoader from "@/components/loader/shop/shop-loader";
 
 const ShopPage = ({ query }) => {
-  const { data: products, isError, isLoading } = useGetAllProductsQuery();
+ 
+  const { data: products, isError, isLoading } = useGetAllProductsQuery('Beds','beige');
   const [priceValue, setPriceValue] = useState([0, 0]);
   const [selectValue, setSelectValue] = useState("");
   const [currPage, setCurrPage] = useState(1);
@@ -97,27 +99,31 @@ const ShopPage = ({ query }) => {
       }
     }
 
-    // category filter
     if (query.category) {
+      console.log('Category Filter:', query.category);
       product_items = product_items.filter(
-        (p) =>
-          p.parent.toLowerCase().replace("&", "").split(" ").join("-") ===
-          query.category
+          (p) =>
+              p.category && p.category.toLowerCase() === query.category.toLowerCase()
       );
-    }
+      console.log('After category filter:', product_items);
+  }
+  
 
-    // category filter
+    // subcategory filter
     if (query.subCategory) {
+      console.log('Before category filter:', product_items);
       product_items = product_items.filter(
         (p) =>
           p.children.toLowerCase().replace("&", "").split(" ").join("-") ===
           query.subCategory
       );
+      
     }
 
-    // color filter
+    //color filter
     if (query.color) {
       product_items = product_items.filter((product) => {
+        console.log('Color Filter:', query.color);
         for (let i = 0; i < product.imageURLs.length; i++) {
           const color = product.imageURLs[i]?.color;
           if (

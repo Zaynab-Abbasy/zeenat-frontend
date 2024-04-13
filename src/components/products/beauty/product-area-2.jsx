@@ -5,7 +5,7 @@ import { useGetProductTypeQuery } from "@/redux/features/productApi";
 import { HomeThreePrdTwoLoader } from "@/components/loader";
 
 // tabs
-const tabs = ["All Collection", "Trending", "Beauty", "Cosmetics"];
+const tabs = ["All Collection", "Trending", "beds", "chairs"];
 
 const ProductAreaTwo = () => {
   const [activeTab, setActiveTab] = useState(tabs[0]);
@@ -13,10 +13,10 @@ const ProductAreaTwo = () => {
     data: products,
     isError,
     isLoading,
-  } = useGetProductTypeQuery({ type: "beauty" });
+  } = useGetProductTypeQuery({ type: "furniture" });
   const activeRef = useRef(null);
   const marker = useRef(null);
-
+  const [categories, setCategories] = useState([]);
   // handleActive
   const handleActive = (e, tab) => {
     setActiveTab(tab);
@@ -37,6 +37,14 @@ const ProductAreaTwo = () => {
     }
   }, [activeTab, products]);
 
+  useEffect(() => {
+    // Fetch category data from your API
+    // Example fetch call
+    fetch('/showCategory')
+      .then(response => response.json())
+      .then(data => setCategories(data))
+      .catch(error => console.error('Error fetching categories:', error));
+  }, []);
   // decide what to render
   let content = null;
 
@@ -57,13 +65,14 @@ const ProductAreaTwo = () => {
       product_items = products.data
         .slice()
         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-    } else if (activeTab === "Beauty") {
+    } else if (activeTab === "beds") {
+      product_items = products.data.filter((p) => {
+        (p) =>p.category && p.category.parent === "beds"  
+      });
+  }
+   else if (activeTab === "Chairs") {
       product_items = products.data.filter(
-        (p) => p.category.name === "Discover Skincare"
-      );
-    } else if (activeTab === "Cosmetics") {
-      product_items = products.data.filter(
-        (p) => p.category.name === "Awesome Lip Care"
+        (p) =>p.category && p.category.name === "chairs"
       );
     } else {
       product_items = products.data;

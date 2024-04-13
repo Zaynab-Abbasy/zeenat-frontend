@@ -68,7 +68,8 @@ export const authApi = apiSlice.injectEndpoints({
             userLoggedIn({
               accessToken: result.data.data.token,
               user: result.data.data.user,
-            })
+            }),
+            console.log("user-Info")
           );
         } catch (err) {
           // do nothing

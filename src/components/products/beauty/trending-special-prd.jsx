@@ -27,7 +27,7 @@ const sliderSetting = {
 
 const TrendingSpecialPrd = () => {
   const { data: products, isError, isLoading } =
-    useGetProductTypeQuery({ type: 'beauty', query: `new=true` });
+    useGetProductTypeQuery({ type: 'furniture', query: `new=true` });
   // decide what to render
   let content = null;
 

@@ -62,6 +62,7 @@ function Currency({active,handleActive}) {
 // setting
 function ProfileSetting({active,handleActive}) {
   const { user } = useSelector((state) => state.auth);
+  
   const dispatch = useDispatch();
   const router = useRouter();
   // handle logout
@@ -69,6 +70,7 @@ function ProfileSetting({active,handleActive}) {
     dispatch(userLoggedOut());
     router.push('/')
   }
+  console.log("data from user",user)
   return (
     <div className="tp-header-top-menu-item tp-header-setting">
       <span

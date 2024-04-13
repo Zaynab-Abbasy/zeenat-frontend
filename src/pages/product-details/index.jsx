@@ -12,6 +12,8 @@ import PrdDetailsLoader from '@/components/loader/prd-details-loader';
 
 const ProductDetailsPage = ({ query }) => {
   const { data: product, isLoading, isError } = useGetProductQuery("6431364df5a812bd37e765ac");
+  console.log('query.id:', query.id);
+
   // decide what to render
   let content = null;
   if (isLoading) {
@@ -23,7 +25,7 @@ const ProductDetailsPage = ({ query }) => {
   if (!isLoading && !isError && product) {
     content = (
       <>
-        <ProductDetailsBreadcrumb category={product.category.name} title={product.title} />
+        <ProductDetailsBreadcrumb category={product.category} title={product.title} />
         <ProductDetailsArea productItem={product} />
       </>
     );
@@ -42,6 +44,7 @@ export default ProductDetailsPage;
 
 export const getServerSideProps = async (context) => {
   const { query } = context;
+  console.log('Query object:', query);
 
   return {
     props: {

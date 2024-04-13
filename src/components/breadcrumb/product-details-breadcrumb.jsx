@@ -1,7 +1,7 @@
 import React from 'react';
 import { SmDot } from '@/svg';
 
-const ProductDetailsBreadcrumb = ({category,title}) => {
+const ProductDetailsBreadcrumb = ({category,parent,title}) => {
   return (
     <section className="breadcrumb__area breadcrumb__style-2 include-bg pt-50 pb-20">
     <div className="container">

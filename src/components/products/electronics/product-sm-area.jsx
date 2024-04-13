@@ -7,7 +7,7 @@ import ProductSmItem from './product-sm-item';
 import HomeSmPrdLoader from '@/components/loader/home/home-sm-prd-loader';
 
 const ProductSmArea = () => {
-  const { data: products, isError, isLoading, refetch } = useGetProductTypeQuery({type:'electronics'});
+  const { data: products, isError, isLoading, refetch } = useGetProductTypeQuery({type:'Living Room'});
   // decide what to render
   let content = null;
 

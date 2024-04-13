@@ -40,9 +40,16 @@ const ColorFilter = ({setCurrPage,shop_right=false}) => {
     const product_items = products.data;
     let allColor = [];
     product_items.forEach((product) => {
-      let uniqueColor = new Set(product.imageURLs.map((item) => item?.color));
-      allColor = [...new Set([...allColor, ...uniqueColor])];
-    });
+      if (product.imageURLs) {
+        const imageUrlsArray = JSON.parse(product.imageURLs);
+        let uniqueColor = new Set(imageUrlsArray.map((item) => item?.color)); // Corrected typo here
+        allColor = [...new Set([...allColor, ...uniqueColor])];
+        console.log('Product data:', product); // Log individual product data
+      } else {
+        console.log('No imageURLs for product:', product.id);
+      }
+  })
+      
 
     let uniqueColors = [
       ...new Map(allColor.map((color) => [color?.name, color])).values(),
@@ -56,11 +63,12 @@ const ColorFilter = ({setCurrPage,shop_right=false}) => {
                 type="checkbox"
                 id={item.name}
                 checked={
-                  router.query.color ===
-                  item.name.toLowerCase().replace("&", "").split(" ").join("-")
-                    ? "checked"
-                    : false
-                }
+                 router.query.color ===
+  (item.name ? item.name.toLowerCase().replace("&", "").split(" ").join("-") : "")
+    ? "checked"
+    : false
+}
+
                 readOnly
               />
               <label

@@ -18,6 +18,11 @@ const DetailsWrapper = ({ productItem, handleImageActive, activeImg, detailsBott
   const [textMore, setTextMore] = useState(false);
   const dispatch = useDispatch()
 
+  
+  console.log("product description",productItem.description)
+  console.log("product category",productItem.category)
+  
+
   useEffect(() => {
     if (reviews && reviews.length > 0) {
       const rating =
@@ -47,7 +52,8 @@ const DetailsWrapper = ({ productItem, handleImageActive, activeImg, detailsBott
   return (
     <div className="tp-product-details-wrapper">
       <div className="tp-product-details-category">
-        <span>{category.name}</span>
+        <span>{productItem.category}</span>
+        
       </div>
       <h3 className="tp-product-details-title">{title}</h3>
 
@@ -65,9 +71,10 @@ const DetailsWrapper = ({ productItem, handleImageActive, activeImg, detailsBott
           </div>
         </div>
       </div>
-      <p>{textMore ? description : `${description.substring(0, 100)}...`}
-        <span onClick={() => setTextMore(!textMore)}>{textMore ? 'See less' : 'See more'}</span>
-      </p>
+      <p>{textMore ? description : `${description?.substring(0, 100)}...`}
+  <span onClick={() => setTextMore(!textMore)}>{textMore ? 'See less' : 'See more'}</span>
+</p>
+
 
       {/* price */}
       <div className="tp-product-details-price-wrapper mb-20">
@@ -79,32 +86,39 @@ const DetailsWrapper = ({ productItem, handleImageActive, activeImg, detailsBott
             </span>
           </>
         ) : (
-          <span className="tp-product-details-price new-price">${price.toFixed(2)}</span>
+          <span className="tp-product-details-price new-price">${price ? price.toFixed(2) : '0.00'}</span>
+
         )}
       </div>
 
       {/* variations */}
-      {imageURLs.some(item => item?.color && item?.color?.name) && <div className="tp-product-details-variation">
-        <div className="tp-product-details-variation-item">
-          <h4 className="tp-product-details-variation-title">Color :</h4>
-          <div className="tp-product-details-variation-list">
-            {imageURLs.map((item, i) => (
-              <button onClick={() => handleImageActive(item)} key={i} type="button"
-                className={`color tp-color-variation-btn ${item.img === activeImg ? "active" : ""}`} >
-                <span
-                  data-bg-color={`${item.color.clrCode}`}
-                  style={{ backgroundColor: `${item.color.clrCode}` }}
-                ></span>
-                {item.color && item.color.name && (
-                  <span className="tp-color-variation-tootltip">
-                    {item.color.name}
-                  </span>
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>}
+      {imageURLs && Array.isArray(imageURLs) && imageURLs.some(item => item?.color && item?.color?.name) && (
+  <div className="tp-product-details-variation">
+    <div className="tp-product-details-variation-item">
+      <h4 className="tp-product-details-variation-title">Color :</h4>
+      <div className="tp-product-details-variation-list">
+        {imageURLs.map((item, i) => (
+          <button
+            onClick={() => handleImageActive(item)}
+            key={i}
+            type="button"
+            className={`color tp-color-variation-btn ${item.img === activeImg ? "active" : ""}`}
+          >
+            <span
+              data-bg-color={`${item.color.clrCode}`}
+              style={{ backgroundColor: `${item.color.clrCode}` }}
+            ></span>
+            {item.color && item.color.name && (
+              <span className="tp-color-variation-tootltip">{item.color.name}</span>
+            )}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
+
+
 
       {/* if ProductDetailsCountdown true start */}
       {offerDate?.endDate && <ProductDetailsCountdown offerExpiryTime={offerDate?.endDate} />}
@@ -142,7 +156,10 @@ const DetailsWrapper = ({ productItem, handleImageActive, activeImg, detailsBott
       </div>
       {/* product-details-action-sm end */}
 
-      {detailsBottom && <DetailsBottomInfo category={category?.name} sku={sku} tag={tags[0]} />}
+      {detailsBottom && tags && tags.length > 0 && (
+  <DetailsBottomInfo category={productItem.category} sku={sku} tag={tags[0]} />
+)}
+
     </div>
   );
 };
