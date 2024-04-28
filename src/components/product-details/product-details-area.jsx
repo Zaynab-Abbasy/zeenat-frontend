@@ -16,7 +16,7 @@ const ProductDetailsArea = ({ productItem }) => {
 
   // handle image active
   const handleImageActive = (item) => {
-    setActiveImg(item.img);
+    setActiveImg(item.url);
   };
 
   console.log("product Item:",productItem)

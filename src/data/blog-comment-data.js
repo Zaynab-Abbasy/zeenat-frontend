@@ -9,12 +9,12 @@ const comment_data = [
     id: 1,
     user: user_1,
     name: 'Muhammad Ali',
-    date: '12 April, 2023 at 3.50pm',
+    date: '12 April, 2024 at 3.50pm',
     desc: 'By defining and following internal and external processes, your team will have clarity on resources to  attract and retain customers for your business.',
     children:{
       user: user_2,
       name: 'Owais',
-      date: '15 April, 2023 at 5.50pm',
+      date: '15 April, 2024 at 5.50pm',
       desc: 'By defining and following internal and external processes, your team will have clarity on resources to  attract and retain customers for your business.',
     }
   },
@@ -22,7 +22,7 @@ const comment_data = [
     id: 2,
     user: user_3,
     name: 'Muhammad Sakil',
-    date: '20 April, 2023 at 3.50pm',
+    date: '20 April, 2024 at 3.50pm',
     desc: 'By defining and following internal and external processes, your team will have clarity on resources to  attract and retain customers for your business.',
   },
 ]

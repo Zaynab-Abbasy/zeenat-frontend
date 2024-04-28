@@ -56,7 +56,7 @@ const ShopFilterOffCanvas = ({
             {/* product rating */}
             <TopRatedProducts />
             {/* brand */}
-            <ProductBrand setCurrPage={setCurrPage} shop_right={right_side} />
+            {/* <ProductBrand setCurrPage={setCurrPage} shop_right={right_side} /> */}
             {/* reset filter */}
             <ResetButton shop_right={right_side} />
           </div>

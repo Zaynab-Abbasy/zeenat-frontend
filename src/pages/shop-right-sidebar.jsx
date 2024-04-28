@@ -118,10 +118,10 @@ const ShopRightSidebarPage = ({ query }) => {
       })
     }
 
-    // brand filter
-    if (query.brand) {
-      product_items = product_items.filter(p => p.brand.name.toLowerCase().replace("&", "").split(" ").join("-") === query.brand)
-    }
+    // // brand filter
+    // if (query.brand) {
+    //   product_items = product_items.filter(p => p.brand.name.toLowerCase().replace("&", "").split(" ").join("-") === query.brand)
+    // }
 
     content = (
       <>

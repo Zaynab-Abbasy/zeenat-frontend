@@ -30,9 +30,10 @@ export const productApi = apiSlice.injectEndpoints({
       providesTags:['PopularProducts']
     }),
     getTopRatedProducts: builder.query({
-      query: () => `https://shofy-backend.vercel.app/api/product/top-rated`,
+      query: () => `http://127.0.0.1:5000/top-rated-products`,
       providesTags:['TopRatedProducts']
     }),
+    
     // get single product
     getProduct: builder.query({
       query: (id) => `http://127.0.0.1:5000/productdetails/${id}`,

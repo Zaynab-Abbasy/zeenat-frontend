@@ -16,7 +16,7 @@ const PostboxDetailsNav = () => {
         <div className="tp-postbox-details-navigation-content">
           <span>Previous Post</span>
           <h3 className="tp-postbox-details-navigation-title">
-            <Link href="/blog-details">Hiring the Right Sales Team at <br /> the Right Time</Link>
+            <Link href="/blog-details">Curating Furniture <br /> the Right Time</Link>
           </h3>
         </div>
       </div>
@@ -24,7 +24,7 @@ const PostboxDetailsNav = () => {
         <div className="tp-postbox-details-navigation-content">
           <span>Next Post</span>
           <h3 className="tp-postbox-details-navigation-title">
-            <Link href="/blog-details">Fully embrace the return of <br /> 90s fashion</Link>
+            <Link href="/blog-details">Fully embrace the return of <br /> vintage furniture</Link>
           </h3>
         </div>
         <div className="tp-postbox-details-navigation-icon ml-15">

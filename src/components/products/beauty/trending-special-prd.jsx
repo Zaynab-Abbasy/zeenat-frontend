@@ -64,22 +64,22 @@ const TrendingSpecialPrd = () => {
                 <div className="tp-special-thumb">
                   <Image src={special_thumb} alt="special-big img" priority />
                   <div className="tp-special-hotspot-item tp-special-hotspot-1">
-                    <span className="tp-hotspot tp-pulse-border ">
+                    {/* <span className="tp-hotspot tp-pulse-border ">
                       <PlusTwo />
-                    </span>
-                    <div className="tp-special-hotspot-content">
+                    </span> */}
+                    {/* <div className="tp-special-hotspot-content">
                       <h3 className="tp-special-hotspot-title">Skincare Product</h3>
                       <p>Lorem ipsum dolor sit amet consectetur.</p>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="tp-special-hotspot-item tp-special-hotspot-2">
-                    <span className="tp-hotspot tp-pulse-border ">
+                    {/* <span className="tp-hotspot tp-pulse-border ">
                       <PlusTwo />
-                    </span>
-                    <div className="tp-special-hotspot-content">
+                    </span> */}
+                    {/* <div className="tp-special-hotspot-content">
                       <h3 className="tp-special-hotspot-title">Skincare Product</h3>
                       <p>Lorem ipsum dolor sit amet consectetur.</p>
-                    </div>
+                    </div> */}
                   </div>
 
                 </div>

@@ -91,9 +91,9 @@ const BeautyBanner = () => {
                         Make Every Moment Count
                       </h3>
                       <div className="tp-slider-feature-3 d-flex flex-wrap align-items-center p-relative z-index-1 mb-15">
-                        <FeatureItem icon={<Cosmetics />} title={<>High-end <br /> Living Room</>} />
-                        <FeatureItem icon={<VeganProduct />} title={<>Dinning <br /> Products</>} />
-                        <FeatureItem icon={<Meckoup />} title={<>Decor<br /> Essentials</>} />
+                        <FeatureItem  title={<>High-end <br /> Living Room</>} />
+                        <FeatureItem  title={<>Dinning <br /> Products</>} />
+                        <FeatureItem  title={<>Decor<br /> Essentials</>} />
                       </div>
                       <div className="tp-slider-btn-3">
                         <Link

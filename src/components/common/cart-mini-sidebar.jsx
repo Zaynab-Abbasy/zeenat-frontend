@@ -54,11 +54,11 @@ const handleCloseCartMini = () => {
                     </h5>
                     {item.discount !== undefined && item.discount > 0 ? (
   <span className="cartmini__price">
-    ${(Number(item.price) - (Number(item.price) * Number(item.discount)) / 100).toFixed(2)}
+    RS.{(Number(item.price) - (Number(item.price) * Number(item.discount)) / 100).toFixed(2)}
   </span>
 ) : (
   <span className="cartmini__price">
-    ${item.price !== undefined ? item.price.toFixed(2) : '0.00'}
+    RS.{item.price !== undefined ? item.price.toFixed(2) : '0.00'}
   </span>
 )}
 
@@ -77,7 +77,7 @@ const handleCloseCartMini = () => {
           <div className="cartmini__checkout">
             <div className="cartmini__checkout-title mb-30">
               <h4>Subtotal:</h4>
-              <span>${total.toFixed(2)}</span>
+              <span>RS.{total.toFixed(2)}</span>
             </div>
             <div className="cartmini__checkout-btn">
               <Link href="/cart" onClick={handleCloseCartMini} className="tp-btn mb-10 w-100"> view cart</Link>

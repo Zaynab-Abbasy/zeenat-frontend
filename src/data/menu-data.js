@@ -12,22 +12,22 @@ const menu_data = [
     home_pages: [
       {
         img: home_1,
-        title: 'Electronics',
+        title: 'Furniture',
         link: '/'
       },
       {
         img: home_2,
-        title: 'Fashion',
+        title: 'Furniture',
         link: '/home-2'
       },
       {
         img: home_3,
-        title: 'Beauty',
+        title: 'Furniture',
         link: '/home-3'
       },
       {
         img: home_4,
-        title: 'Jewelry',
+        title: 'Furniture',
         link: '/home-4'
       }
     ]

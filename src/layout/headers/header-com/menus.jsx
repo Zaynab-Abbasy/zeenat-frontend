@@ -23,7 +23,7 @@ const instagram_data = [
 ];
 const Menus = () => {
   const { data: products, isError, isLoading } = useGetProductTypeQuery({
-    type: 'electronics',
+    type: 'furniture',
     query: 'new=true'
   });
   

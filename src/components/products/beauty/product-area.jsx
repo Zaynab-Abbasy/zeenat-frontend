@@ -27,7 +27,7 @@ const ProductArea = () => {
   if (!isLoading && !isError && products?.data?.length > 0) {
     const product_items = products.data.slice(0, 8);
     content = product_items.map((prd) => (
-      <div key={prd._id} className="col-lg-3 col-md-4 col-sm-6">
+      <div key={prd.id} className="col-lg-3 col-md-4 col-sm-6">
         <ProductItem product={prd} />
       </div>
     ))

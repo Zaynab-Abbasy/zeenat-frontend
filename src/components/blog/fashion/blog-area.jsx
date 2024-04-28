@@ -6,7 +6,7 @@ import { TextShapeLine } from '@/svg';
 import BlogItem from './blog-item';
 
 const BlogArea = () => {
-  const blogs = blogData.filter(b => b.blog === 'fashion')
+  const blogs = blogData.filter(b => b.blog === 'electronics')
   return (
     <>
       <section className="tp-blog-area pt-110 pb-120">

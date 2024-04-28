@@ -33,7 +33,7 @@ const DetailsWrapper = ({ productItem, handleImageActive, activeImg, detailsBott
       setRatingVal(0);
     }
   }, [reviews]);
-
+console.log("reviews",productItem.reviews)
   // handle add product
   const handleAddProduct = (prd) => {
     dispatch(add_cart_product(prd));
@@ -80,43 +80,45 @@ const DetailsWrapper = ({ productItem, handleImageActive, activeImg, detailsBott
       <div className="tp-product-details-price-wrapper mb-20">
         {discount > 0 ? (
           <>
-            <span className="tp-product-details-price old-price">${price}</span>
+            <span className="tp-product-details-price old-price">rS.{price}</span>
             <span className="tp-product-details-price new-price">
-              {" "}${(Number(price) - (Number(price) * Number(discount)) / 100).toFixed(2)}
+              {" "}RS.{(Number(price) - (Number(price) * Number(discount)) / 100).toFixed(2)}
             </span>
           </>
         ) : (
-          <span className="tp-product-details-price new-price">${price ? price.toFixed(2) : '0.00'}</span>
+          <span className="tp-product-details-price new-price">RS.{price ? price.toFixed(2) : '0.00'}</span>
 
         )}
       </div>
 
-      {/* variations */}
-      {imageURLs && Array.isArray(imageURLs) && imageURLs.some(item => item?.color && item?.color?.name) && (
+     {/* variations */}
+     {productItem.imageURLs && Array.isArray(productItem.imageURLs) && productItem.imageURLs.some(item => item?.color && item?.color?.name) && (
   <div className="tp-product-details-variation">
     <div className="tp-product-details-variation-item">
       <h4 className="tp-product-details-variation-title">Color :</h4>
       <div className="tp-product-details-variation-list">
-        {imageURLs.map((item, i) => (
-          <button
-            onClick={() => handleImageActive(item)}
-            key={i}
-            type="button"
-            className={`color tp-color-variation-btn ${item.img === activeImg ? "active" : ""}`}
-          >
-            <span
-              data-bg-color={`${item.color.clrCode}`}
-              style={{ backgroundColor: `${item.color.clrCode}` }}
-            ></span>
+        {productItem.imageURLs.map((item, i) => (
+          <div key={i}>
+            <button
+              onClick={() => handleImageActive(item)}
+              type="button"
+              className={`color tp-color-variation-btn ${item.url === activeImg ? "active" : ""}`}
+            >
+              <span
+                data-bg-color={`${item.color.clrCode}`}
+                style={{ backgroundColor: `${item.color.clrCode}` }}
+              ></span>
+            </button>
             {item.color && item.color.name && (
-              <span className="tp-color-variation-tootltip">{item.color.name}</span>
+              <span className="tp-color-variation-name">{item.color.name}</span>
             )}
-          </button>
+          </div>
         ))}
       </div>
     </div>
   </div>
 )}
+
 
 
 

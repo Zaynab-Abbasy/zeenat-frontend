@@ -49,7 +49,7 @@ const ShopArea = ({ all_products, products, otherProps }) => {
                 {/* product rating */}
                 <TopRatedProducts />
                 {/* brand */}
-                <ProductBrand setCurrPage={setCurrPage} />
+                {/* <ProductBrand setCurrPage={setCurrPage} /> */}
                 {/* reset filter */}
                 <ResetButton/>
               </div>

@@ -34,16 +34,16 @@ const BlogDetailsArea = ({blog}) => {
           <div className="col-xl-9 col-lg-8">
             <div className="tp-postbox-details-main-wrapper">
               <div className="tp-postbox-details-content">
-                <p className="tp-dropcap">sales process is critically important to the success of your reps and your business. If you have never seen a really skilled salesperson work, it seems almost effortless. They ask great questions, craftt perfect proposal, answer questions, address concerns and seamlessly seal the Underneath the surface of all of that, the salesperson has probably dedicated hours honing their craft and ensuring the process moves smoothly.</p>
+                <p className="tp-dropcap">Are you drawn to multiple furniture styles but unsure how to incorporate them into your home without creating a chaotic mishmash? Fear not! Mastering the art of mixing furniture styles can bring a delightful sense of eclectic elegance to your space. Start by identifying your preferred styles. Whether you lean towards mid-century modern, traditional, industrial, or bohemian, understanding your aesthetic preferences is key.</p>
 
-                <p>One of the challenges that often surfaces when  working with a remote sales team is a lack of transparency over what is happening, and where in the process things are taking place. We’re going to peel back the curtain and show you how to create the best sales.</p>
+                <p>Once you have a grasp of your style preferences, follow these tips to achieve a harmonious blend. Anchor with neutral pieces to establish a foundation, then layer in contrasting elements to add visual interest. Embrace unifying elements such as color palettes or patterns to tie the different styles together.</p>
 
-                <h4 className="tp-postbox-details-heading">Breaking Up With Fast Fashion Has Been Easier</h4>
-                <p>Lommodo ligula eget dolor. Aenean massa. Cum sociis que penatibus magnis dis parturient montes lorem, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque euro, pretium, sem. Nulla onsequat massa quis enim. donec pede justo fringilla vel aliquet.</p>
+                <h4 className="tp-postbox-details-heading">Layer in Contrasting Elements</h4>
+                <p>Layer in contrasting elements to add visual interest. Mix textures, materials, and shapes to create a dynamic composition that captures attention and sparks intrigue..</p>
 
                 <div className="tp-postbox-details-desc-thumb text-center">
                   <Image src={blog_details_sm_img} alt="details-sm-img" />
-                  <span className="tp-postbox-details-desc-thumb-caption">Gucci’s Women’s Cruise Collection 2023 Lookbook Has Arrived</span>
+                  <span className="tp-postbox-details-desc-thumb-caption">Embrace Unifying Elements</span>
                 </div>
                 <p>“We’re so glad we’ll be working with you to get your new marketing strategy up and running. I have attached the details of your package. Next you’ll get an email from Jen to schedule your kick-off meeting and be assigned your account rep. During your kick-off meeting, we will introduce your project team, let you know what access we need to start.” </p>
 
@@ -54,12 +54,12 @@ const BlogDetailsArea = ({blog}) => {
                       <Image className="tp-postbox-details-quote-shape-2" src={shape_line_2} alt="shape" />
                     </div>
                     <p>There is a way out of every box, a solution to every puzzle its just a matter of finding it.</p>
-                    <cite>Shahnewaz Sakil</cite>
+                    <cite>Zainab</cite>
                   </blockquote>
                 </div>
 
-                <h4 className="tp-postbox-details-heading">Exploring the English Countryside</h4>
-                <p>Lorem ligula eget dolor. Aenean massa. Cum sociis que penatibus et magnis dis parturient montes lorem,nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque euro, pretium quis, sem. Nulla onsequat massa quis enim.</p>
+                <h4 className="tp-postbox-details-heading">Curate Thoughtfully</h4>
+                <p>Curate your selections thoughtfully to avoid overwhelming your space. Edit your choices carefully, ensuring each piece contributes to the overall aesthetic and functionality of the room.</p>
 
                 <div className="tp-postbox-details-list">
                   <ul>
@@ -77,8 +77,8 @@ const BlogDetailsArea = ({blog}) => {
                         <span>Tags:</span>
                         <a href="#">Lifesttyle</a>
                         <a href="#">Awesome</a>
-                        <a href="#">Winter</a>
-                        <a href="#">Sunglasses</a>
+                        <a href="#">Furniture</a>
+                        <a href="#">Chic</a>
                       </div>
                     </div>
                     <div className="col-xl-4 col-lg-6">

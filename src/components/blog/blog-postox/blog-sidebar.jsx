@@ -39,7 +39,7 @@ const BlogSidebar = () => {
               </div>
               <div className="tp-sidebar-about-content">
                 <h3 className="tp-sidebar-about-title">
-                  <a href="#">Ravi {"O'Leigh"}</a>
+                  <a href="#">Abdullah {"Querishi"}</a>
                 </h3>
                 <span className="tp-sidebar-about-designation">Photographer & Blogger</span>
                 <p>Lorem ligula eget dolor. Aenean massa. Cum sociis que penatibus magnis dis parturient</p>
@@ -84,12 +84,11 @@ const BlogSidebar = () => {
           <h3 className="tp-sidebar-widget-title">Categories</h3>
           <div className="tp-sidebar-widget-content">
             <ul>
-              <li><Link href="/blog">Farming <span>(12)</span></Link></li>
-              <li><Link href="/blog">Crisp Bread & Cake <span>(6)</span></Link></li>
-              <li><Link href="/blog">Milk & Meat <span>(2)</span></Link></li>
-              <li><Link href="/blog">Organic Fruits <span>(8)</span></Link></li>
-              <li><Link href="/blog">Sea Foods <span>(0)</span></Link></li>
-              <li><Link href="/blog">Vegetable <span>(3)</span></Link></li>
+              <li><Link href="/blog">Living Room <span>(12)</span></Link></li>
+              <li><Link href="/blog">bedroom <span>(6)</span></Link></li>
+              <li><Link href="/blog">decor <span>(2)</span></Link></li>
+              <li><Link href="/blog">Organic wood <span>(8)</span></Link></li>
+              
             </ul>
           </div>
         </div>
@@ -101,10 +100,10 @@ const BlogSidebar = () => {
           <div className="tp-sidebar-widget-content tagcloud">
             <a href="#">Summer</a>
             <a href="#">Vintage</a>
-            <a href="#">Sunglasses</a>
-            <a href="#">Organic Food</a>
+            <a href="#">furniture</a>
+            <a href="#">Organic wood</a>
             <a href="#">Lifesttyle</a>
-            <a href="#">Nature</a>
+            <a href="#">Chic</a>
           </div>
         </div>
         {/* <!-- tag cloud end --> */}
