@@ -3,7 +3,8 @@ import ReviewForm from '../forms/review-form';
 import ReviewItem from './review-item';
 
 const DetailsTabNav = ({ product }) => {
-  const {_id, description, additionalInformation, reviews } = product || {};
+  const {id, description, additionalInformation, reviews } = product || {};
+  console.log('Reviews:', reviews);
   const activeRef = useRef(null)
   const marker = useRef(null);
   // handleActive
@@ -102,11 +103,14 @@ const DetailsTabNav = ({ product }) => {
                     {/* reviews */}
                     <div className="tp-product-details-review-list pr-110">
   <h3 className="tp-product-details-review-title">Rating & Review</h3>
+  
   {reviews && reviews.length === 0 && (
     <h3 className="tp-product-details-review-title">There are no reviews yet.</h3>
   )}
   {reviews && reviews.length > 0 && reviews.map(item => (
-    <ReviewItem key={item._id} review={item} />
+    
+    <ReviewItem key={item.id} review={item} />
+    
   ))}
 </div>
 
@@ -117,7 +121,7 @@ const DetailsTabNav = ({ product }) => {
                     <h3 className="tp-product-details-review-form-title">Review this product</h3>
                     <p>Your email address will not be published. Required fields are marked *</p>
                     {/* form start */}
-                    <ReviewForm product_id={_id} />
+                    <ReviewForm product_id={id} />
                     {/* form end */}
                   </div>
                 </div>

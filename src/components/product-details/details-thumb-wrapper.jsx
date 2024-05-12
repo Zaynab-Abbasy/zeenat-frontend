@@ -13,12 +13,13 @@ const DetailsThumbWrapper = ({
 }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   //const images = JSON.parse(imageURLs);
+  console.log("imageUrls",imageURLs);
   return (
     <>
       <div className="tp-product-details-thumb-wrapper tp-tab d-sm-flex">
         <nav>
           <div className="nav nav-tabs flex-sm-column">
-            {imageURLs?.map((item, i) => (
+            {Array.isArray(imageURLs) && imageURLs.map((item, i) => (
               <button
                 key={i}
                 className={`nav-link ${item.url === activeImg ? "active" : ""}`}

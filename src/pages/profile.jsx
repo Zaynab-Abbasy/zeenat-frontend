@@ -13,6 +13,7 @@ import Loader from "@/components/loader/loader";
 const ProfilePage = () => {
   const router = useRouter();
   const {data: orderData, isError, isLoading, } = useGetUserOrdersQuery();
+  console.log("order data",orderData);
   useEffect(() => {
     const isAuthenticate = Cookies.get("userInfo");
     if (!isAuthenticate) {

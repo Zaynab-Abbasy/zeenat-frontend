@@ -25,15 +25,20 @@ export const authApi = apiSlice.injectEndpoints({
 
           Cookies.set(
             "userInfo",
+            
             JSON.stringify({
+              
               accessToken: result.data.data.token,
               user: result.data.data.user,
             }),
-            { expires: 0.5 }
+            { expires: 3.0 }
+            
           );
+          console.log("user info",cookies.get("userInfo"));
 
           dispatch(
             userLoggedIn({
+              
               accessToken: result.data.data.token,
               user: result.data.data.user,
             })
@@ -52,9 +57,10 @@ export const authApi = apiSlice.injectEndpoints({
       }),
 
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        
         try {
           const result = await queryFulfilled;
-
+          console.log("Response Data:", result.data.data);
           Cookies.set(
             "userInfo",
             JSON.stringify({
@@ -63,14 +69,18 @@ export const authApi = apiSlice.injectEndpoints({
             }),
             { expires: 0.5 }
           );
-
+          console.log("Accesstoken:", result.data.data.accessToken);
           dispatch(
             userLoggedIn({
+              
               accessToken: result.data.data.token,
               user: result.data.data.user,
+              
             }),
-            console.log("user-Info")
+            console.log("user-Info",result.data.data)
+            
           );
+          console.log("Redux State Updated:", result.data.data.user);
         } catch (err) {
           // do nothing
         }
@@ -85,7 +95,7 @@ export const authApi = apiSlice.injectEndpoints({
           const result = await queryFulfilled;
           dispatch(
             userLoggedIn({
-              user: result.data,
+               user: result.data,
             })
           );
         } catch (err) {
@@ -148,7 +158,7 @@ export const authApi = apiSlice.injectEndpoints({
     // updateProfile password
     updateProfile: builder.mutation({
       query: ({ id, ...data }) => ({
-        url: `http://127.0.0.1:5000/user/update-user/${id}`,
+        url: `http://127.0.0.1:5000/user/update-profile/${id}`,
         method: "PUT",
         body: data,
       }),
@@ -162,6 +172,7 @@ export const authApi = apiSlice.injectEndpoints({
             JSON.stringify({
               accessToken: result.data.data.token,
               user: result.data.data.user,
+              
             }),
             { expires: 0.5 }
           );

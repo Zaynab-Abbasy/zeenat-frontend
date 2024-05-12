@@ -6,7 +6,7 @@ import collection_thumb_2 from '@assets/img/product/collection/collection-2.jpg'
 import Timer from '../common/timer';
 import Link from 'next/link';
 
-const BeautyOfferBanner = () => {
+const FurnitureOfferBanner = () => {
   const expiryTimestamp = new Date('2024-8-16');
   const { seconds, minutes, hours, days } = useTimer({expiryTimestamp});
   return (
@@ -48,27 +48,27 @@ const BeautyOfferBanner = () => {
             </div>
             <div className="row justify-content-center">
               <div className="col-xl-3 col-lg-4 col-md-5">
-                  <div className="tp-collection-offer-wrapper mt-20">
+                  {/* <div className="tp-collection-offer-wrapper mt-20">
                     <p>Discover our Decor Selection <span>75% Extra Discount</span> for your...</p>
-                  </div>
+                  </div> */}
               </div>
               <div className="col-xl-3 col-lg-4 col-md-5">
                   <div className="tp-collection-countdown d-flex align-items-center justify-content-center justify-content-md-start ml-20 mt-20">
                     <div className="tp-product-countdown" data-countdown data-date="Sep 30 2024 20:20:22">
                         <div className="tp-product-countdown-inner">
                           <ul>
-                              <li><span>{days}</span> Days</li>
+                              {/* <li><span>{days}</span> Days</li>
                               <li><span>{hours}</span> Hrs</li>
-                              <li><span>{minutes}</span> Min</li>
+                              <li><span>{minutes}</span> Min</li> */}
                           </ul>
                           {/* <Timer expiryTimestamp={time} /> */}
                         </div>
                     </div>
                     <div className="tp-product-countdown has-second" data-countdown data-date="Sep 30 2024 20:20:22">
                         <div className="tp-product-countdown-inner">
-                          <ul>
+                          {/* <ul>
                               <li><span suppressHydrationWarning>{seconds}</span> Sec</li>
-                          </ul>
+                          </ul> */}
                         </div>
                     </div>
                   </div>
@@ -80,4 +80,4 @@ const BeautyOfferBanner = () => {
   );
 };
 
-export default BeautyOfferBanner;
+export default FurnitureOfferBanner;

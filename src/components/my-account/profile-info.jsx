@@ -20,7 +20,7 @@ const schema = Yup.object().shape({
 
 const ProfileInfo = () => {
   const { user } = useSelector((state) => state.auth);
-
+console.log("user from profile",user)
   const [updateProfile, {}] = useUpdateProfileMutation();
   // react hook form
   const {register,handleSubmit,formState: { errors },reset} = useForm({
@@ -29,7 +29,7 @@ const ProfileInfo = () => {
   // on submit
   const onSubmit = (data) => {
     updateProfile({
-      id:user?._id,
+      id:user?.id,
       name:data.name,
       email:data.email,
       phone:data.phone,
@@ -78,7 +78,7 @@ const ProfileInfo = () => {
             <div className="col-xxl-12">
               <div className="profile__input-box">
                 <div className="profile__input">
-                  <input {...register("phone", { required: true })} name='phone' type="text" placeholder="Enter your number" defaultValue="0123 456 7889" />
+                  <input {...register("phone", { required: true })} name='phone' type="text" placeholder="Enter your number" defaultValue={user?.phone} />
                   <span>
                     <PhoneThree/>
                   </span>
@@ -90,7 +90,7 @@ const ProfileInfo = () => {
             <div className="col-xxl-12">
               <div className="profile__input-box">
                 <div className="profile__input">
-                  <input {...register("address", { required: true })} name='address' type="text" placeholder="Enter your address" defaultValue="3304 Randall Drive" />
+                  <input {...register("address", { required: true })} name='address' type="text" placeholder="Enter your address" defaultValue={user?.address} />
                   <span>
                     <LocationTwo/>
                   </span>
@@ -102,7 +102,7 @@ const ProfileInfo = () => {
             <div className="col-xxl-12">
               <div className="profile__input-box">
                 <div className="profile__input">
-                  <textarea {...register("bio", { required: true })} name='bio' placeholder="Enter your bio" defaultValue="Hi there, this is my bio..." />
+                  <textarea {...register("bio", { required: true })} name='bio' placeholder="Enter your bio" defaultValue={user?.bio} />
                   <ErrorMsg msg={errors.bio?.message} />
                 </div>
               </div>

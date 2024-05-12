@@ -4,6 +4,7 @@
 /*----------------------------------------*/
 
 .#{$theme-prifix}-header{
+    
     $self : &;
     &-sticky{
         &.header-sticky{

@@ -33,7 +33,7 @@ const featured_data = [
   },
 ]
 
-const BeautyFeatured = () => {
+const FurnitureFeatured = () => {
   return (
     <>
       <section className="tp-featured-product-area pt-70 pb-150">
@@ -64,4 +64,4 @@ const BeautyFeatured = () => {
   );
 };
 
-export default BeautyFeatured;
+export default FurnitureFeatured;

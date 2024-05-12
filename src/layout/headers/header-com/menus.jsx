@@ -22,44 +22,44 @@ const instagram_data = [
   { id: 4, link: "https://www.gooogle.com/", img: insta_6 },
 ];
 const Menus = () => {
-  const { data: products, isError, isLoading } = useGetProductTypeQuery({
-    type: 'furniture',
-    query: 'new=true'
-  });
+  // const { data: products, isError, isLoading } = useGetProductTypeQuery({
+  //   type: 'furniture',
+  //   query: 'new=true'
+  // });
   
   // decide what to render
-  let content = null;
+  // let content = null;
   
-  if (isLoading) {
-    content = (
-      <HomeNewArrivalPrdLoader loading={isLoading} />
-    );
-  }
+  // if (isLoading) {
+  //   content = (
+  //     <HomeNewArrivalPrdLoader loading={isLoading} />
+  //   );
+  // }
   
-  if (!isLoading && isError) {
-    content = <ErrorMsg msg="There was an error" />;
-  }
+  // if (!isLoading && isError) {
+  //   content = <ErrorMsg msg="There was an error" />;
+  // }
   
-  if (!isLoading && !isError && products?.data?.length === 0) {
-    content = <ErrorMsg msg="No Products found!" />;
-  }
+  // if (!isLoading && !isError && products?.data?.length === 0) {
+  //   content = <ErrorMsg msg="No Products found!" />;
+  // }
   
-  if (!isLoading && !isError && products?.data?.length > 0) {
-    const product_items = products.data;
+  // if (!isLoading && !isError && products?.data?.length > 0) {
+  //   const product_items = products.data;
   
-    content = (
-      <div className="row">
-        {product_items.slice(0, 4).map((item) => (
-          <div key={item._id} className="col-md-3">
-            <ProductItem product={item} />
-          </div>
-        ))}
-      </div>
-    );
-  } else {
-    // If there are no products or an error occurs, set content to an empty array
-    content = [];
-  }
+  //   content = (
+  //     <div className="row">
+  //       {product_items.slice(0, 4).map((item) => (
+  //         <div key={item.id} className="col-md-3">
+  //           <ProductItem product={item} />
+  //         </div>
+  //       ))}
+  //     </div>
+  //   );
+  // } else {
+  //   // If there are no products or an error occurs, set content to an empty array
+  //   content = [];
+  // }
   return (
     <ul>
       {menu_data.map((menu) =>

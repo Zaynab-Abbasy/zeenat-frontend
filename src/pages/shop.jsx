@@ -139,13 +139,13 @@ const ShopPage = ({ query }) => {
     }
 
     // brand filter
-    if (query.brand) {
-      product_items = product_items.filter(
-        (p) =>
-          p.brand.name.toLowerCase().replace("&", "").split(" ").join("-") ===
-          query.brand
-      );
-    }
+    // if (query.brand) {
+    //   product_items = product_items.filter(
+    //     (p) =>
+    //       p.brand.name.toLowerCase().replace("&", "").split(" ").join("-") ===
+    //       query.brand
+    //   );
+    // }
 
     content = (
       <>
@@ -154,10 +154,10 @@ const ShopPage = ({ query }) => {
           products={product_items}
           otherProps={otherProps}
         />
-        <ShopFilterOffCanvas
+        {/* <ShopFilterOffCanvas
           all_products={products.data}
           otherProps={otherProps}
-        />
+        /> */}
       </>
     );
   }
@@ -165,7 +165,7 @@ const ShopPage = ({ query }) => {
     <Wrapper>
       <SEO pageTitle="Shop" />
       <HeaderTwo style_2={true} />
-      <ShopBreadcrumb title="Shop Grid" subtitle="Shop Grid" />
+      <ShopBreadcrumb title="Shop Products" subtitle="Shop" />
       {content}
       <Footer primary_style={true} />
     </Wrapper>

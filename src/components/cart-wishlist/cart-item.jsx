@@ -7,21 +7,24 @@ import { Close, Minus, Plus } from "@/svg";
 import { add_cart_product, quantityDecrement, remove_product } from "@/redux/features/cartSlice";
 
 const CartItem = ({product}) => {
-  const {_id, img,title,price, orderQuantity = 0 } = product || {};
+  const {id, img,title,price, orderQuantity = 0 } = product || {};
 
   const dispatch = useDispatch();
 
     // handle add product
     const handleAddProduct = (prd) => {
+      console.log("Adding product:", prd);
       dispatch(add_cart_product(prd))
     }
     // handle decrement product
     const handleDecrement = (prd) => {
+      console.log("Decrementing product:", prd);
       dispatch(quantityDecrement(prd))
     }
   
     // handle remove product
     const handleRemovePrd = (prd) => {
+      console.log("Removing product:", prd);
       dispatch(remove_product(prd))
     }
 
@@ -29,13 +32,13 @@ const CartItem = ({product}) => {
     <tr>
       {/* img */}
       <td className="tp-cart-img">
-        <Link href={`/product-details/${_id}`}>
+        <Link href={`/product-details/${id}`}>
           <Image src={img} alt="product img" width={70} height={100} />
         </Link>
       </td>
       {/* title */}
       <td className="tp-cart-title">
-        <Link href={`/product-details/${_id}`}>{title}</Link>
+        <Link href={`/product-details/${id}`}>{title}</Link>
       </td>
       {/* price */}
       <td className="tp-cart-price">
@@ -55,7 +58,7 @@ const CartItem = ({product}) => {
       </td>
       {/* action */}
       <td className="tp-cart-action">
-        <button onClick={()=> handleRemovePrd({title,id:_id})} className="tp-cart-action-btn">
+        <button onClick={()=> handleRemovePrd({title,id:id})} className="tp-cart-action-btn">
           <Close />
           <span>{" "}Remove</span>
         </button>

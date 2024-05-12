@@ -35,7 +35,7 @@ const CheckoutOrderArea = ({ checkoutData }) => {
 
           {/*  item list */}
           {cart_products.map((item) => (
-            <li key={item._id} className="tp-order-info-list-desc">
+            <li key={item.id} className="tp-order-info-list-desc">
               <p>
                 {item.title} <span> x {item.orderQuantity}</span>
               </p>
@@ -57,10 +57,10 @@ const CheckoutOrderArea = ({ checkoutData }) => {
                   name="shippingOption"
                 />
                 <label
-                  onClick={() => handleShippingCost(60)}
+                  onClick={() => handleShippingCost(600)}
                   htmlFor="flat_shipping"
                 >
-                  Delivery: Today Cost :<span>$60.00</span>
+                  Delivery: Today Cost :<span>RS.600.00</span>
                 </label>
                 <ErrorMsg msg={errors?.shippingOption?.message} />
               </span>
@@ -74,10 +74,10 @@ const CheckoutOrderArea = ({ checkoutData }) => {
                   name="shippingOption"
                 />
                 <label
-                  onClick={() => handleShippingCost(20)}
+                  onClick={() => handleShippingCost(200)}
                   htmlFor="flat_rate"
                 >
-                  Delivery: 7 Days Cost: <span>$20.00</span>
+                  Delivery: 7 Days Cost: <span>RS.200.00</span>
                 </label>
                 <ErrorMsg msg={errors?.shippingOption?.message} />
               </span>
@@ -87,25 +87,25 @@ const CheckoutOrderArea = ({ checkoutData }) => {
            {/*  subtotal */}
            <li className="tp-order-info-list-subtotal">
             <span>Subtotal</span>
-            <span>${total.toFixed(2)}</span>
+            <span>RS.{total.toFixed(2)}</span>
           </li>
 
            {/*  shipping cost */}
            <li className="tp-order-info-list-subtotal">
             <span>Shipping Cost</span>
-            <span>${shippingCost.toFixed(2)}</span>
+            <span>RS.{shippingCost.toFixed(2)}</span>
           </li>
 
            {/* discount */}
            <li className="tp-order-info-list-subtotal">
             <span>Discount</span>
-            <span>${discountAmount.toFixed(2)}</span>
+            <span>RS.{discountAmount.toFixed(2)}</span>
           </li>
 
           {/* total */}
           <li className="tp-order-info-list-total">
             <span>Total</span>
-            <span>${parseFloat(cartTotal).toFixed(2)}</span>
+            <span>RS.{parseFloat(cartTotal).toFixed(2)}</span>
           </li>
         </ul>
       </div>

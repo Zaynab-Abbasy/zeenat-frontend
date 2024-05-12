@@ -57,7 +57,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
                   name="country"
                   id="country"
                   type="text"
-                  placeholder="United States (US)"
+                  placeholder="Pakistan "
                 />
                 <ErrorMsg msg={errors?.lastName?.message} />
               </div>

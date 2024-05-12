@@ -58,10 +58,13 @@ const HeaderThree = () => {
                       </Link>
                     </div>
                     <div className="tp-header-action-item d-none d-sm-block">
-                      <button onClick={() => dispatch(openCartMini())} type="button" className="tp-header-action-btn cartmini-open-btn">
+                    <Link href="/cart" className="tp-header-action-btn">
+                      {/* <button onClick={() => dispatch(openCartMini())} type="button" className="tp-header-action-btn cartmini-open-btn">
+                      <Link href="/cart" onClick={handleCloseCartMini} className="tp-btn mb-10 w-100"> view cart</Link> */}
                         <CartTwo />
                         <span className="tp-header-action-badge">{quantity}</span>
-                      </button>
+                        </Link>
+                      {/* </button> */}
                     </div>
                     <div className="tp-header-action-item d-lg-none">
                       <button onClick={() => setIsCanvasOpen(true)} type="button" className="tp-header-action-btn tp-offcanvas-open-btn">
@@ -85,7 +88,7 @@ const HeaderThree = () => {
       {/* cart mini sidebar end */}
 
       {/* off canvas start */}
-      <OffCanvas isOffCanvasOpen={isOffCanvasOpen} setIsCanvasOpen={setIsCanvasOpen} categoryType="beauty" />
+      <OffCanvas isOffCanvasOpen={isOffCanvasOpen} setIsCanvasOpen={setIsCanvasOpen} categoryType="furniture" />
       {/* off canvas end */}
     </>
   );

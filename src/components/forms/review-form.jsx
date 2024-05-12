@@ -17,6 +17,7 @@ const schema = Yup.object().shape({
 });
 
 const ReviewForm = ({product_id}) => {
+  console.log("product id", product_id)
   const { user } = useSelector((state) => state.auth);
   const [rating, setRating] = useState(0);
   const [addReview, {}] = useAddReviewMutation();
@@ -38,7 +39,7 @@ const ReviewForm = ({product_id}) => {
     }
     else {
       addReview({
-        userId: user?._id,
+        userId: user?.id,
         productId: product_id,
         rating: rating,
         comment: data.comment,

@@ -39,7 +39,7 @@ const ContactForm = () => {
       <div className="tp-contact-input-wrapper">
         <div className="tp-contact-input-box">
           <div className="tp-contact-input">
-            <input {...register("name", { required: `Name is required!` })} name="name" id="name" type="text" placeholder="Muhammad Ali" />
+            <input {...register("name", { required: `Name is required!` })} name="name" id="name" type="text" placeholder="Zainab Abbasi" />
           </div>
           <div className="tp-contact-input-title">
             <label htmlFor="name">Your Name</label>

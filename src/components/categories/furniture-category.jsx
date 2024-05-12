@@ -6,7 +6,7 @@ import { ArrowRightSm, ArrowRightSmTwo } from "@/svg";
 import { useGetProductTypeCategoryQuery } from "@/redux/features/categoryApi";
 import { HomeThreeCategoryLoader } from "../loader";
 import { useRouter } from "next/router";
-const BeautyCategory = () => {
+const FurnitureCategory = () => {
   const router = useRouter();
   const {
     data: categories,
@@ -39,7 +39,7 @@ const BeautyCategory = () => {
   if (!isLoading && !isError && categories?.result?.length > 0) {
     const category_items = categories.result;
     content = category_items.map((item) => (
-      <div key={item._id} className="col-lg-3 col-sm-6">
+      <div key={item.id} className="col-lg-3 col-sm-6">
         <div className="tp-category-item-3 p-relative black-bg text-center z-index-1 fix mb-30">
           <div
             className="tp-category-thumb-3 include-bg"
@@ -99,4 +99,4 @@ const BeautyCategory = () => {
   );
 };
 
-export default BeautyCategory;
+export default FurnitureCategory;

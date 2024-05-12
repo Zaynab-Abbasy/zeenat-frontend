@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const NEXT_PUBLIC_API_BASE_URL = 'https://shofy-backend.vercel.app';
+const NEXT_PUBLIC_API_BASE_URL = 'https://http://127.0.0.1:5000';
 
 export const apiSlice = createApi({
   reducerPath: "api",
@@ -13,6 +13,7 @@ export const apiSlice = createApi({
           const user = JSON.parse(userInfo);
           if (user?.accessToken) {
             headers.set("Authorization", `Bearer ${user.accessToken}`);
+            console.log("Authorization header set with access token:", user.accessToken);
           }
         }
       } catch (error) {

@@ -32,7 +32,7 @@ export const fashion_testi_data = [
 ]
 
 // beauty testimonial data 
-export const beauty_testi_data = [
+export const furniture_testi_data = [
   {
     id:1,
     review:4,

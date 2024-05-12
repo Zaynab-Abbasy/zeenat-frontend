@@ -9,18 +9,30 @@ export default function useAuthCheck() {
 
     useEffect(() => {
         const localAuth =  Cookies.get('userInfo')
+        //console.log("LocalAuth from cookies:", localAuth);
+
 
         if (localAuth) {
             const auth = JSON.parse(localAuth);
-            if (auth?.accessToken && auth?.user) {
+            //console.log("Parsed auth from local storage:", auth);
+            if (auth?.user.accessToken && auth?.user) {
                 dispatch(
                     userLoggedIn({
-                        accessToken: auth.accessToken,
+                        
+                        accessToken: auth.user.accessToken,
                         user: auth.user,
+                        
                     })
                 );
+                //console.log("Dispatched userLoggedIn action with access token:", auth.user.accessToken);
+                
             }
+            //console.log("acesstoken",auth.user.accessToken);
+            //console.log("user",auth.user);
+
+
         }
+        
         setAuthChecked(true);
     }, [dispatch, setAuthChecked]);
 

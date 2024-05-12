@@ -212,8 +212,9 @@ const useCheckoutSubmit = () => {
       discount: discountAmount,
       totalAmount: cartTotal,
       orderNote:data.orderNote,
-      user: `${user?._id}`,
+      user: `${user?.id}`,
     };
+    console.log("Order Info:", orderInfo);
     if (data.payment === 'Card') {
       if (!stripe || !elements) {
         return;
@@ -243,14 +244,18 @@ const useCheckoutSubmit = () => {
       saveOrder({
         ...orderInfo
       }).then(res => {
+        console.log("Response f:", res);
+        console.log("Response:", orderInfo);
         if(res?.error){
         }
         else {
+          const orderId = res?.data?.data?.order?.id;
+          console.log("Received Order ID:", orderId);
           localStorage.removeItem("cart_products")
           localStorage.removeItem("couponInfo");
           setIsCheckoutSubmit(false)
           notifySuccess("Your Order Confirmed!");
-          router.push(`/order/${res.data?.order?._id}`);
+          router.push(`/order/${res?.data?.data?.order?.id}`);
         }
       })
     }
@@ -291,7 +296,7 @@ const useCheckoutSubmit = () => {
           else {
             localStorage.removeItem("couponInfo");
             notifySuccess("Your Order Confirmed!");
-            router.push(`/order/${result.data?.order?._id}`);
+            router.push(`/order/${result.data?.order?.id}`);
           }
         })
        } 

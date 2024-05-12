@@ -50,7 +50,7 @@ const CompareArea = () => {
                                 height={176}
                               />
                               <h4 className="tp-compare-product-title">
-                                <Link href={`/product-details/${item._id}`}>
+                                <Link href={`/product-details/${item.id}`}>
                                   {item.title}
                                 </Link>
                               </h4>
@@ -62,11 +62,10 @@ const CompareArea = () => {
                       <tr>
                         <th>Description</th>
                         {compareItems.map(item => (
-                          <td key={item._id}>
+                          <td key={item.id}>
                             <div className="tp-compare-desc">
                               <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Ad, distinctio.
+                                {item.description}
                               </p>
                             </div>
                           </td>

@@ -13,7 +13,9 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     add_cart_product: (state, { payload }) => {
-      const isExist = state.cart_products.some((i) => i._id === payload._id);
+      console.log("Payload received:", payload);
+      console.log("Current cart products:", state.cart_products);
+      const isExist = state.cart_products.some((i) => i.id === payload.id);
       if (!isExist) {
         const newItem = {
           ...payload,
@@ -23,7 +25,7 @@ export const cartSlice = createSlice({
         notifySuccess(`${state.orderQuantity} ${payload.title} added to cart`);
       } else {
         state.cart_products.map((item) => {
-          if (item._id === payload._id) {
+          if (item.id === payload.id) {
             if (item.quantity >= item.orderQuantity + state.orderQuantity) {
               item.orderQuantity =
                 state.orderQuantity !== 1
@@ -38,6 +40,8 @@ export const cartSlice = createSlice({
           return { ...item };
         });
       }
+      console.log("Updated cart products:", state.cart_products);
+     
       setLocalStorage("cart_products", state.cart_products);
     },
     increment: (state, { payload }) => {
@@ -51,7 +55,7 @@ export const cartSlice = createSlice({
     },
     quantityDecrement: (state, { payload }) => {
       state.cart_products.map((item) => {
-        if (item._id === payload._id) {
+        if (item.id === payload.id) {
           if (item.orderQuantity > 1) {
             item.orderQuantity = item.orderQuantity - 1;
           }
@@ -62,7 +66,7 @@ export const cartSlice = createSlice({
     },
     remove_product: (state, { payload }) => {
       state.cart_products = state.cart_products.filter(
-        (item) => item._id !== payload.id
+        (item) => item.id !== payload.id
       );
       setLocalStorage("cart_products", state.cart_products);
       notifyError(`${payload.title} Remove from cart`);

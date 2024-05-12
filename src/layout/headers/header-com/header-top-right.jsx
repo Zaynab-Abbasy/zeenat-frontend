@@ -62,7 +62,7 @@ function Currency({active,handleActive}) {
 // setting
 function ProfileSetting({active,handleActive}) {
   const { user } = useSelector((state) => state.auth);
-  
+  console.log("User in header:", user);
   const dispatch = useDispatch();
   const router = useRouter();
   // handle logout
@@ -91,7 +91,12 @@ function ProfileSetting({active,handleActive}) {
           <Link href="/cart">Cart</Link>
         </li>
         <li>
-          {!user?.name &&<Link href="/login" className="cursor-pointer">Login</Link>}
+        
+
+
+          { 
+            !user?.name &&<Link href="/login" className="cursor-pointer">Login</Link>
+          }
           {user?.name &&<a onClick={handleLogout} className="cursor-pointer">Logout</a>}
         </li>
       </ul>

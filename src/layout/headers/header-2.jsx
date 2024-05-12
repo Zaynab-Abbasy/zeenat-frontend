@@ -100,10 +100,12 @@ const HeaderTwo = ({ style_2 = false }) => {
                           </Link>
                         </div>
                         <div className="tp-header-action-item">
-                          <button onClick={() => dispatch(openCartMini())} className="tp-header-action-btn cartmini-open-btn" >
+                        <Link href="/cart" className="tp-header-action-btn">
+                          {/* <button onClick={() => dispatch(openCartMini())} className="tp-header-action-btn cartmini-open-btn" > */}
                             <CartTwo />
                             <span className="tp-header-action-badge">{quantity}</span>
-                          </button>
+                            </Link>
+                          {/* </button> */}
                         </div>
                         <div className="tp-header-action-item tp-header-hamburger mr-20 d-xl-none">
                           <button onClick={() => setIsCanvasOpen(true)} type="button" className="tp-offcanvas-open-btn">

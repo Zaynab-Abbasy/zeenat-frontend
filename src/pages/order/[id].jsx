@@ -2,13 +2,14 @@ import { useRouter } from "next/router";
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import dayjs from "dayjs";
+import Link from "next/link";
 import ReactToPrint from "react-to-print";
 // internal
 import SEO from "@/components/seo";
 import Wrapper from "@/layout/wrapper";
 import HeaderTwo from "@/layout/headers/header-2";
 import Footer from "@/layout/footers/footer";
-import logo from "@assets/img/logo/logo.svg";
+import logo from '@assets/img/logo/logo-white.jpeg'
 import ErrorMsg from "@/components/common/error-msg";
 import { useGetUserOrderByIdQuery } from "@/redux/features/order/orderApi";
 import PrdDetailsLoader from "@/components/loader/prd-details-loader";
@@ -16,8 +17,10 @@ import PrdDetailsLoader from "@/components/loader/prd-details-loader";
 
 const SingleOrder = ({ params }) => {
   const orderId = params.id;
+  console.log("orderId:", orderId);
   const printRef = useRef();
-  const { data: order, isError, isLoading } = useGetUserOrderByIdQuery(orderId);
+  const { data: order, isError, isLoading } = useGetUserOrderByIdQuery(params.id);
+  console.log("order details",order);
   let content = null;
   if (isLoading) {
     content = <PrdDetailsLoader loading={isLoading}/>
@@ -26,7 +29,9 @@ const SingleOrder = ({ params }) => {
     content = <ErrorMsg msg="There was an error" />;
   }
   if (!isLoading && !isError) {
-    const { name, country, city, contact, invoice, createdAt, cart, shippingCost, discount, totalAmount,paymentMethod} = order.order;
+    const { id,name, country, city, contact, invoice, createdAt, cart, shipping_cost, discount, total_amount,payment_method} = order.data;
+    const parsedCart = JSON.parse(order.data.cart);
+    
     content = (
       <>
         <section className="invoice__area pt-120 pb-120">
@@ -49,7 +54,7 @@ const SingleOrder = ({ params }) => {
                         <div className="col-md-4 col-sm-6">
                           <div className="invoice__left">
                             <Image src={logo} alt="logo" />
-                            <p>2879 Elk Creek Road <br /> Stone Mountain, Georgia </p>
+                            <p>Block 6, street 01 <br /> F6-4 isb </p>
                           </div>
                         </div>
                         <div className="col-md-8 col-sm-6">
@@ -75,7 +80,7 @@ const SingleOrder = ({ params }) => {
                   <div className="col-md-6 col-sm-4">
                     <div className="invoice__details mt-md-0 mt-20 text-md-end">
                       <p className="mb-0">
-                        <strong>Invoice ID:</strong> #{invoice}
+                        <strong>Invoice ID:</strong> #{id}
                       </p>
                       <p className="mb-0">
                         <strong>Date:</strong> {dayjs(createdAt).format("MMMM D, YYYY")}
@@ -95,14 +100,15 @@ const SingleOrder = ({ params }) => {
                       <th scope="col">Amount</th>
                     </tr>
                   </thead>
+                  
                   <tbody className="table-group-divider">
-                    {cart.map((item, i) => (
+                    {parsedCart.map((item, i) => (
                       <tr key={i}>
                         <td>{i + 1}</td>
                         <td>{item.title}</td>
                         <td>{item.orderQuantity}</td>
-                        <td>${item.price}</td>
-                        <td>${item.price * item.orderQuantity}</td>
+                        <td>RS.{item.price}</td>
+                        <td>RS.{item.price * item.orderQuantity}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -113,26 +119,26 @@ const SingleOrder = ({ params }) => {
                   <div className="col-lg-3 col-md-4">
                     <div className="invoice__payment-method mb-30">
                       <h5 className="mb-0">Payment Method</h5>
-                      <p className="tp-font-medium text-uppercase">{paymentMethod}</p>
+                      <p className="tp-font-medium text-uppercase">{payment_method}</p>
                     </div>
                   </div>
                   <div className="col-lg-3 col-md-4">
                     <div className="invoice__shippint-cost mb-30">
                       <h5 className="mb-0">Shipping Cost</h5>
-                      <p className="tp-font-medium">${shippingCost}</p>
+                      <p className="tp-font-medium">RS.{shipping_cost}</p>
                     </div>
                   </div>
                   <div className="col-lg-3 col-md-4">
                     <div className="invoice__discount-cost mb-30">
                       <h5 className="mb-0">Discount</h5>
-                      <p className="tp-font-medium">${discount.toFixed(2)}</p>
+                      <p className="tp-font-medium">RS.{discount.toFixed(2)}</p>
                     </div>
                   </div>
                   <div className="col-lg-3 col-md-4">
                     <div className="invoice__total-ammount mb-30">
                       <h5 className="mb-0">Total Ammount</h5>
                       <p className="tp-font-medium text-danger">
-                        <strong>${parseInt(totalAmount).toFixed(2)}</strong>
+                        <strong>RS.{parseInt(total_amount).toFixed(2)}</strong>
                       </p>
                     </div>
                   </div>
@@ -158,8 +164,15 @@ const SingleOrder = ({ params }) => {
                     content={() => printRef.current}
                     documentTitle="Invoice"
                   />
+
+
                 </div>
+                
               </div>
+              <br/>
+              <Link href="/shop" className="tp-checkout-btn">
+                Return to shop
+              </Link>
             </div>
           </div>
         </section>
@@ -184,9 +197,11 @@ const SingleOrder = ({ params }) => {
 };
 
 export const getServerSideProps = async ({ params }) => {
+  console.log("Params:", params); // Add this line to log the value of params
   return {
     props: { params },
   };
 };
+
 
 export default SingleOrder;

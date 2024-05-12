@@ -64,7 +64,7 @@ function FeatureItem({ icon, title }) {
   )
 }
 
-const BeautyBanner = () => {
+const FurnitureBanner = () => {
   return (
     <>
       <section className="tp-slider-area p-relative z-index-1">
@@ -124,4 +124,4 @@ const BeautyBanner = () => {
   );
 };
 
-export default BeautyBanner;
+export default FurnitureBanner;
