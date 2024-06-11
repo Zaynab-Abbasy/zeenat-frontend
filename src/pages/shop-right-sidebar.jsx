@@ -108,9 +108,9 @@ const ShopRightSidebarPage = ({ query }) => {
     // color filter
     if (query.color) {
       product_items = product_items.filter(product => {
-        for (let i = 0; i < product.imageURLs.length; i++) {
+         for (let i = 0; i < product.imageURLs.length; i++) {
           const color = product.imageURLs[i]?.color;
-          if (color && color?.name.toLowerCase().replace("&", "").split(" ").join("-") === query.color) {
+           if (color && color?.name.toLowerCase().replace("&", "").split(" ").join("-") === query.color) {
             return true; // match found, include product in result
           }
         }

@@ -11,7 +11,7 @@ export const productApi = apiSlice.injectEndpoints({
       },
       providesTags: ['Products']
     }),
-    // Add more endpoints if needed
+  // Add more endpoints if needed
   
 
     getProductType: builder.query({
@@ -22,11 +22,11 @@ export const productApi = apiSlice.injectEndpoints({
       providesTags:['ProductType']
     }),
     getOfferProducts: builder.query({
-      query: (type) => `https://shofy-backend.vercel.app/api/product/offer?type=${type}`,
+      query: (type) => `/offer?type=${type}`,
       providesTags:['OfferProducts']
     }),
     getPopularProductByType: builder.query({
-      query: (type) => `https://shofy-backend.vercel.app/api/product/popular/${type}`,
+      query: (type) => `/popular/${type}`,
       providesTags:['PopularProducts']
     }),
     getTopRatedProducts: builder.query({
@@ -45,7 +45,7 @@ export const productApi = apiSlice.injectEndpoints({
     
     // get related products
     getRelatedProducts: builder.query({
-      query: (id) => `https://shofy-backend.vercel.app/api/product/related-product/${id}`,
+      query: (id) => `related-product/${id}`,
       providesTags: (result, error, arg) => [
         { type: "RelatedProducts", id: arg },
       ],

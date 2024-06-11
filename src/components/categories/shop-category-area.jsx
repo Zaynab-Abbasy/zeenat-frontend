@@ -6,16 +6,18 @@ import ShopCategoryLoader from "../loader/shop/shop-category-loader";
 
 const ShopCategoryArea = () => {
   const { data: categories, isLoading, isError } = useGetShowCategoryQuery();
+  console.log("category data", categories);
   const router = useRouter();
+
   // handle category route
-  const handleCategoryRoute = (title) => {
+  const handleCategoryRoute = (title, isSubCategory = false) => {
+    const routeType = isSubCategory ? 'subCategory' : 'category';
     router.push(
-      `/shop?category=${title
+      `/shop?${routeType}=${title
         .toLowerCase()
         .replace("&", "")
         .split(" ")
-        .join("-")
-      }`
+        .join("-")}`
     );
   };
 
@@ -49,19 +51,36 @@ const ShopCategoryArea = () => {
             <span className="tp-category-main-item">
               {item.products.length} Products
             </span>
+            {item.children && item.children.length > 0 && (
+              <div className="tp-category-dropdown">
+                <select
+                  onChange={(e) =>
+                    handleCategoryRoute(e.target.value, true)
+                  }
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Select Subcategory
+                  </option>
+                  {item.children.map((child, index) => (
+                    <option key={index} value={child}>
+                      {child}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
           </div>
         </div>
       </div>
     ));
   }
   return (
-    <>
-      <section className="tp-category-area pb-120">
-        <div className="container">
-          <div className="row">{content}</div>
-        </div>
-      </section>
-    </>
+    <section className="tp-category-area pb-120">
+      <div className="container">
+        <div className="row">{content}</div>
+      </div>
+    </section>
   );
 };
 

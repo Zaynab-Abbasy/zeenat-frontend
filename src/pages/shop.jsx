@@ -13,7 +13,7 @@ import ShopLoader from "@/components/loader/shop/shop-loader";
 
 const ShopPage = ({ query }) => {
  
-  const { data: products, isError, isLoading } = useGetAllProductsQuery();
+  const { data: products, isError, isLoading } = useGetAllProductsQuery(query.color,query.category,query.subCategory);
   const [priceValue, setPriceValue] = useState([0, 0]);
   const [selectValue, setSelectValue] = useState("");
   const [currPage, setCurrPage] = useState(1);
@@ -109,16 +109,20 @@ const ShopPage = ({ query }) => {
   }
   
 
-    // subcategory filter
-    if (query.subCategory) {
-      console.log('Before category filter:', product_items);
-      product_items = product_items.filter(
-        (p) =>
-          p.children.toLowerCase().replace("&", "").split(" ").join("-") ===
-          query.subCategory
-      );
-      
-    }
+  if (query.subCategory) {
+    console.log('Before category filter:', product_items);
+    product_items = product_items.filter(
+      (p) =>
+        p.children &&
+        p.children.some(
+          (child) =>
+            child.toLowerCase().replace("&", "").split(" ").join("-") ===
+            query.subCategory
+        )
+    );
+    console.log('After subcategory filter:', product_items);
+  }
+  
 
     //color filter
     if (query.color) {
@@ -176,6 +180,7 @@ export default ShopPage;
 
 export const getServerSideProps = async (context) => {
   const { query } = context;
+  console.log('Query:', query);
 
   return {
     props: {

@@ -13,10 +13,10 @@ const ColorFilter = ({setCurrPage,shop_right=false}) => {
   const dispatch = useDispatch()
 
   // handle color 
-  const handleColor = (clr) => {
+  const handleColor = (color) => {
     setCurrPage(1)
     router.push(
-      `/${shop_right?'shop-right-sidebar':'shop'}?color=${clr
+      `/${shop_right?'shop-right-sidebar':'shop'}?color=${color
         .toLowerCase()
         .replace("&", "")
         .split(" ")
@@ -44,7 +44,8 @@ const ColorFilter = ({setCurrPage,shop_right=false}) => {
         const imageUrlsArray = JSON.parse(product.imageURLs);
         let uniqueColor = new Set(imageUrlsArray.map((item) => item?.color)); // Corrected typo here
         allColor = [...new Set([...allColor, ...uniqueColor])];
-        console.log('Product data:', product); // Log individual product data
+        console.log('Product data:', product);
+        console.log("color info",allColor) // Log individual product data
       } else {
         console.log('No imageURLs for product:', product.id);
       }
