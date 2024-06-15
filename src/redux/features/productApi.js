@@ -4,10 +4,12 @@ export const productApi = apiSlice.injectEndpoints({
   overrideExisting: true,
   endpoints: (builder) => ({
     getAllProducts: builder.query({
-      query: (category, color) => {
-        const categoryParam = category ? category.toLowerCase() : '';
-        const colorParam = color ? color.toLowerCase() : '';
-        return `http://127.0.0.1:5000/productall?category=${categoryParam}&color=${colorParam}`;
+      query: ({ category, color, subCategory }) => {
+        const categoryParam = category ? `category=${category.toLowerCase()}` : '';
+        const subcategoryParam = subCategory ? `subCategory=${subCategory.toLowerCase()}` : '';
+        const colorParam = color ? `color=${color.toLowerCase()}` : '';
+        const queryString = [categoryParam, subcategoryParam, colorParam].filter(Boolean).join('&');
+        return `http://127.0.0.1:5000/productall?${queryString}`;
       },
       providesTags: ['Products']
     }),

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 // internal
@@ -7,107 +7,92 @@ import { useGetAllProductsQuery } from "@/redux/features/productApi";
 import { handleFilterSidebarClose } from "@/redux/features/shop-filter-slice";
 import ShopColorLoader from "@/components/loader/shop/color-filter-loader";
 
-const ColorFilter = ({setCurrPage,shop_right=false}) => {
-  const { data: products, isError, isLoading } = useGetAllProductsQuery();
+const ColorFilter = ({ setCurrPage, shop_right = false }) => {
+  const { data: products, isError, isLoading } = useGetAllProductsQuery({});
   const router = useRouter();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  // handle color 
+  // State to store unique colors
+  const [uniqueColors, setUniqueColors] = useState([]);
+
+  // Fetch all colors from products on component mount or when products change
+  useEffect(() => {
+    if (!isLoading && !isError && products?.data?.length > 0) {
+      const product_items = products.data;
+      let allColors = new Set();
+
+      product_items.forEach((product) => {
+        if (product.imageURLs) {
+          const imageUrlsArray = JSON.parse(product.imageURLs);
+          imageUrlsArray.forEach((item) => {
+            if (item.color && item.color.name && item.color.clrCode) {
+              const colorNameFormatted = item.color.name.toLowerCase().replace("&", "").split(" ").join("-");
+              const colorCode = item.color.clrCode;
+              allColors.add(`${colorNameFormatted}:${colorCode}`);
+            }
+          });
+        }
+      });
+
+      setUniqueColors(Array.from(allColors).map(color => {
+        const [name, clrCode] = color.split(":");
+        return { name, clrCode };
+      }));
+    }
+  }, [isLoading, isError, products]);
+
+  // Handle color selection
   const handleColor = (color) => {
-    setCurrPage(1)
+    setCurrPage(1);
     router.push(
-      `/${shop_right?'shop-right-sidebar':'shop'}?color=${color
+      `/${shop_right ? "shop-right-sidebar" : "shop"}?color=${color
         .toLowerCase()
         .replace("&", "")
         .split(" ")
         .join("-")}`
-    )
+    );
     dispatch(handleFilterSidebarClose());
-  }
-  // decide what to render
+  };
+
+  // Render color filter checkboxes
   let content = null;
-
   if (isLoading) {
-    content = <ShopColorLoader loading={isLoading}/>;
-  }
-  if (!isLoading && isError) {
+    content = <ShopColorLoader loading={isLoading} />;
+  } else if (isError) {
     content = <ErrorMsg msg="There was an error" />;
-  }
-  if (!isLoading && !isError && products?.data?.length === 0) {
+  } else if (products?.data?.length === 0) {
     content = <ErrorMsg msg="No Products found!" />;
-  }
-  if (!isLoading && !isError && products?.data?.length > 0) {
-    const product_items = products.data;
-    let allColor = [];
-    product_items.forEach((product) => {
-      if (product.imageURLs) {
-        const imageUrlsArray = JSON.parse(product.imageURLs);
-        let uniqueColor = new Set(imageUrlsArray.map((item) => item?.color)); // Corrected typo here
-        allColor = [...new Set([...allColor, ...uniqueColor])];
-        console.log('Product data:', product);
-        console.log("color info",allColor) // Log individual product data
-      } else {
-        console.log('No imageURLs for product:', product.id);
-      }
-  })
-      
-
-    let uniqueColors = [
-      ...new Map(allColor.map((color) => [color?.name, color])).values(),
-    ];
-    content = uniqueColors.map((item, i) => {
-      if (item) {
-        return (
-          <li key={i}>
-            <div className="tp-shop-widget-checkbox-circle">
-              <input
-                type="checkbox"
-                id={item.name}
-                checked={
-                 router.query.color ===
-  (item.name ? item.name.toLowerCase().replace("&", "").split(" ").join("-") : "")
-    ? "checked"
-    : false
-}
-
-                readOnly
-              />
-              <label
-                onClick={() => handleColor(item.name)}
-                htmlFor={item.name}
-              >
-                {item.name}
-              </label>
-              <span
-                style={{ backgroundColor: `${item.clrCode}` }}
-                className="tp-shop-widget-checkbox-circle-self"
-              ></span>
-            </div>
-            <span className="tp-shop-widget-checkbox-circle-number">
-              {
-                product_items
-                  .map((p) => p.imageURLs)
-                  .flat()
-                  .filter((i) => i?.color?.name === item?.name).length
-              }
-            </span>
-          </li>
-        );
-      }
-    });
+  } else {
+    content = uniqueColors.map((color, index) => (
+      <li key={index}>
+        <div className="tp-shop-widget-checkbox-circle">
+          <input
+            type="checkbox"
+            id={color.name}
+            checked={router.query.color === color.name ? "checked" : false}
+            readOnly
+          />
+          <label onClick={() => handleColor(color.name)} htmlFor={color.name}>
+            {color.name}
+          </label>
+          <span
+            style={{ backgroundColor: `${color.clrCode}` }}
+            className="tp-shop-widget-checkbox-circle-self"
+          ></span>
+        </div>
+      </li>
+    ));
   }
 
   return (
-    <>
-      <div className="tp-shop-widget mb-50">
-        <h3 className="tp-shop-widget-title">Filter by Color</h3>
-        <div className="tp-shop-widget-content">
-          <div className="tp-shop-widget-checkbox-circle-list">
-            <ul>{content}</ul>
-          </div>
+    <div className="tp-shop-widget mb-50">
+      <h3 className="tp-shop-widget-title">Filter by Color</h3>
+      <div className="tp-shop-widget-content">
+        <div className="tp-shop-widget-checkbox-circle-list">
+          <ul>{content}</ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

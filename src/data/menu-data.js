@@ -87,6 +87,8 @@ const menu_data = [
     link: '/shop',
     sub_menus: [
       { title: 'Shop', link: '/shop' },
+      
+
       // { title: 'Right Sidebar', link: '/shop-right-sidebar' },
       // { title: 'Hidden Sidebar', link: '/shop-hidden-sidebar' },
     ],
@@ -116,6 +118,9 @@ const menu_data = [
     title: 'Contact',
     link: '/contact',
   },
+
+
+
 ]
 
 export default menu_data;

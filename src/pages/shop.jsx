@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import SEO from "@/components/seo";
 import Wrapper from "@/layout/wrapper";
 import HeaderTwo from "@/layout/headers/header-2";
@@ -8,16 +7,19 @@ import ShopArea from "@/components/shop/shop-area";
 import { useGetAllProductsQuery } from "@/redux/features/productApi";
 import ErrorMsg from "@/components/common/error-msg";
 import Footer from "@/layout/footers/footer";
-import ShopFilterOffCanvas from "@/components/common/shop-filter-offcanvas";
 import ShopLoader from "@/components/loader/shop/shop-loader";
 
 const ShopPage = ({ query }) => {
- 
-  const { data: products, isError, isLoading } = useGetAllProductsQuery(query.color,query.category,query.subCategory);
+  const { data: products, isError, isLoading } = useGetAllProductsQuery({
+    category: query.category,
+    color: query.color,
+    subCategory: query.subCategory
+  });
+console.log("products",products)
   const [priceValue, setPriceValue] = useState([0, 0]);
   const [selectValue, setSelectValue] = useState("");
   const [currPage, setCurrPage] = useState(1);
-  // Load the maximum price once the products have been loaded
+
   useEffect(() => {
     if (!isLoading && !isError && products?.data?.length > 0) {
       const maxPrice = products.data.reduce((max, product) => {
@@ -27,18 +29,15 @@ const ShopPage = ({ query }) => {
     }
   }, [isLoading, isError, products]);
 
-  // handleChanges
   const handleChanges = (val) => {
     setCurrPage(1);
     setPriceValue(val);
   };
 
-  // selectHandleFilter
   const selectHandleFilter = (e) => {
     setSelectValue(e.value);
   };
 
-  // other props
   const otherProps = {
     priceFilterValues: {
       priceValue,
@@ -48,11 +47,11 @@ const ShopPage = ({ query }) => {
     currPage,
     setCurrPage,
   };
-  // decide what to render
+
   let content = null;
 
   if (isLoading) {
-    content = <ShopLoader loading={isLoading}/>;
+    content = <ShopLoader loading={isLoading} />;
   }
   if (!isLoading && isError) {
     content = <div className="pb-80 text-center"><ErrorMsg msg="There was an error" /></div>;
@@ -61,110 +60,59 @@ const ShopPage = ({ query }) => {
     content = <ErrorMsg msg="No Products found!" />;
   }
   if (!isLoading && !isError && products?.data?.length > 0) {
-    // products
     let product_items = products.data;
-    // select short filtering
+
     if (selectValue) {
       if (selectValue === "Default Sorting") {
         product_items = products.data;
       } else if (selectValue === "Low to High") {
-        product_items = products.data
-          .slice()
-          .sort((a, b) => Number(a.price) - Number(b.price));
+        product_items = products.data.slice().sort((a, b) => Number(a.price) - Number(b.price));
       } else if (selectValue === "High to Low") {
-        product_items = products.data
-          .slice()
-          .sort((a, b) => Number(b.price) - Number(a.price));
+        product_items = products.data.slice().sort((a, b) => Number(b.price) - Number(a.price));
       } else if (selectValue === "New Added") {
-        product_items = products.data
-          .slice()
-          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        product_items = products.data.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
       } else if (selectValue === "On Sale") {
         product_items = products.data.filter((p) => p.discount > 0);
       } else {
         product_items = products.data;
       }
     }
-    // price filter
-    product_items = product_items.filter(
-      (p) => p.price >= priceValue[0] && p.price <= priceValue[1]
-    );
 
-    // status filter
-    if (query.status) {
-      if (query.status === "on-sale") {
-        product_items = product_items.filter((p) => p.discount > 0);
-      } else if (query.status === "in-stock") {
-        product_items = product_items.filter((p) => p.status === "in-stock");
-      }
-    }
+    product_items = product_items.filter((p) => p.price >= priceValue[0] && p.price <= priceValue[1]);
 
     if (query.category) {
       console.log('Category Filter:', query.category);
-      product_items = product_items.filter(
-          (p) =>
-              p.category && p.category.toLowerCase() === query.category.toLowerCase()
-      );
+      product_items = product_items.filter((p) => p.category && p.category.toLowerCase() === query.category.toLowerCase());
       console.log('After category filter:', product_items);
-  }
-  
+    }
 
-  if (query.subCategory) {
-    console.log('Before category filter:', product_items);
-    product_items = product_items.filter(
-      (p) =>
-        p.children &&
-        p.children.some(
-          (child) =>
-            child.toLowerCase().replace("&", "").split(" ").join("-") ===
-            query.subCategory
-        )
-    );
-    console.log('After subcategory filter:', product_items);
-  }
-  
+    if (query.subCategory) {
+      console.log('Before subcategory filter:', product_items);
+      product_items = product_items.filter((p) => p.subcategory_name && p.subcategory_name.toLowerCase() === query.subCategory.toLowerCase());
+      console.log('After subcategory filter:', product_items);
+    }
 
-    //color filter
     if (query.color) {
       product_items = product_items.filter((product) => {
         console.log('Color Filter:', query.color);
-        for (let i = 0; i < product.imageURLs.length; i++) {
-          const color = product.imageURLs[i]?.color;
-          if (
-            color &&
-            color?.name.toLowerCase().replace("&", "").split(" ").join("-") ===
-              query.color
-          ) {
-            return true; // match found, include product in result
+        const imageUrls = JSON.parse(product.imageURLs);
+        for (let imgData of imageUrls) {
+          const color = imgData.color;
+          if (color && color.name.toLowerCase() === query.color.toLowerCase()) {
+            return true;
           }
         }
-        return false; // no match found, exclude product from result
+        return false;
       });
     }
 
-    // brand filter
-    // if (query.brand) {
-    //   product_items = product_items.filter(
-    //     (p) =>
-    //       p.brand.name.toLowerCase().replace("&", "").split(" ").join("-") ===
-    //       query.brand
-    //   );
-    // }
-
     content = (
       <>
-        <ShopArea
-          all_products={products.data}
-          products={product_items}
-          otherProps={otherProps}
-        />
-        {/* <ShopFilterOffCanvas
-          all_products={products.data}
-          otherProps={otherProps}
-        /> */}
+        <ShopArea all_products={products.data} products={product_items} otherProps={otherProps} />
       </>
     );
   }
+
   return (
     <Wrapper>
       <SEO pageTitle="Shop" />

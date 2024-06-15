@@ -39,12 +39,12 @@ const Footer = ({ style_2 = false, style_3 = false,primary_style=false }) => {
                   <h4 className="tp-footer-widget-title">My Account</h4>
                   <div className="tp-footer-widget-content">
                     <ul>
-                      <li><a href="#">Track Orders</a></li>
-                      <li><a href="#">Shipping</a></li>
-                      <li><a href="#">Wishlist</a></li>
-                      <li><a href="#">My Account</a></li>
-                      <li><a href="#">Order History</a></li>
-                      <li><a href="#">Returns</a></li>
+                      <li><a href="/trackorders">Track Orders</a></li>
+                      
+                      <li><a href="/wishlist">Wishlist</a></li>
+                      <li><a href="/profile">My Account</a></li>
+                      <li><a href="/profile">Order History</a></li>
+                      
                     </ul>
                   </div>
                 </div>
@@ -54,12 +54,12 @@ const Footer = ({ style_2 = false, style_3 = false,primary_style=false }) => {
                   <h4 className="tp-footer-widget-title">Information</h4>
                   <div className="tp-footer-widget-content">
                     <ul>
-                      <li><a href="#">Our Story</a></li>
-                      <li><a href="#">Careers</a></li>
-                      <li><a href="#">Privacy Policy</a></li>
-                      <li><a href="#">Terms & Conditions</a></li>
-                      <li><a href="#">Latest News</a></li>
-                      <li><a href="#">Contact Us</a></li>
+                      <li><a href="/about">Our Story</a></li>
+                      
+                      <li><a href="/privacypolicy">Privacy Policy</a></li>
+                      <li><a href="/termsandconditions">Terms & Conditions</a></li>
+                      
+                      <li><a href="/contact">Contact Us</a></li>
                     </ul>
                   </div>
                 </div>
