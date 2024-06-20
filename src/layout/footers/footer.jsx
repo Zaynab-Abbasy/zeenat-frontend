@@ -4,7 +4,7 @@ import Link from 'next/link';
 // internal
 import logo from '@assets/img/logo/logo.svg';
 import pay from '@assets/img/footer/footer-pay.png';
-import logo_white1 from '@assets/img/logo/logo-white.jpeg'
+import logo_white1 from '@assets/img/logo/logo-white.png'
 import social_data from '@/data/social-data';
 import { Email, Location } from '@/svg';
 
@@ -19,7 +19,7 @@ const Footer = ({ style_2 = false, style_3 = false,primary_style=false }) => {
               <div className="col-xl-4 col-lg-3 col-md-4 col-sm-6">
                 <div className="tp-footer-widget footer-col-1 mb-50">
                   <div className="tp-footer-widget-content">
-                    <div className="tp-footer-logo">
+                    <div className="tp-footer-logo" style={{ marginLeft: '-100px' }}>
                       <Link href="/">
                         <Image src={logo_white1} alt="logo" />
                       </Link>

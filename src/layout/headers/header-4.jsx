@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // internal
 import { CartTwo, Menu, Search, Wishlist } from '@/svg';
 import Menus from './header-com/menus';
-import logo_white from '@assets/img/logo/logo-white.svg';
+import logo_white from '@assets/img/logo/logo-white.png';
 import logo_dark from '@assets/img/logo/logo.svg';
 import useSticky from '@/hooks/use-sticky';
 import SearchBar from './header-com/search-bar';
@@ -31,7 +31,7 @@ const HeaderFour = () => {
                 <div className="col-xl-2 col-lg-2 col-6">
                   <div className="logo">
                     <Link href="/">
-                      <Image className="logo-light" src={logo_white} alt="logo" />
+                      <Image className="logo-light" src={logo_white} alt="logo" style={{ marginLeft: '-100px' }} />
                       <Image className="logo-dark" src={logo_dark} alt="logo" />
                     </Link>
                   </div>

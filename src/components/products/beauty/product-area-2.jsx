@@ -4,20 +4,40 @@ import ErrorMsg from "@/components/common/error-msg";
 import { useGetProductTypeQuery } from "@/redux/features/productApi";
 import { HomeThreePrdTwoLoader } from "@/components/loader";
 
-// tabs
+// Tabs
 const tabs = ["All Collection", "Trending", "beds", "chairs"];
 
 const ProductAreaTwo = () => {
   const [activeTab, setActiveTab] = useState(tabs[0]);
+  const activeRef = useRef(null);
+  const marker = useRef(null);
+  const [categories, setCategories] = useState([]);
+
+  // Function to get query parameter based on the active tab
+  const getQueryParam = (tab) => {
+    switch (tab) {
+      case "Trending":
+        return "trending=true";
+      case "beds":
+        return "category_id=3";
+      case "chairs":
+        return "category_id=2";
+      default:
+        return ""; // Default for "All Collection"
+    }
+  };
+
+  // Fetch products based on the active tab using useGetProductTypeQuery
   const {
     data: products,
     isError,
     isLoading,
-  } = useGetProductTypeQuery({ type: "furniture" });
-  const activeRef = useRef(null);
-  const marker = useRef(null);
-  const [categories, setCategories] = useState([]);
-  // handleActive
+  } = useGetProductTypeQuery({
+    type: "furniture",
+    query: getQueryParam(activeTab),
+  });
+
+  // Handle tab click to set activeTab and update UI accordingly
   const handleActive = (e, tab) => {
     setActiveTab(tab);
     if (e.target.classList.contains("active")) {
@@ -26,57 +46,49 @@ const ProductAreaTwo = () => {
     }
   };
 
+  // Effect to update marker position when activeTab changes
   useEffect(() => {
-    if (
-      activeTab &&
-      activeRef.current &&
-      activeRef.current.classList.contains("active")
-    ) {
+    if (activeTab && activeRef.current && activeRef.current.classList.contains("active")) {
       marker.current.style.left = activeRef.current.offsetLeft + "px";
       marker.current.style.width = activeRef.current.offsetWidth + "px";
     }
   }, [activeTab, products]);
 
+  // Effect to fetch categories (if needed) on component mount
   useEffect(() => {
-    // Fetch category data from your API
-    // Example fetch call
     fetch('/showCategory')
       .then(response => response.json())
       .then(data => setCategories(data))
       .catch(error => console.error('Error fetching categories:', error));
   }, []);
-  // decide what to render
-  let content = null;
 
+  // Determine content based on loading state, error, and products data
+  let content = null;
   if (isLoading) {
     content = <HomeThreePrdTwoLoader loading={isLoading} />;
-  }
-  if (!isLoading && isError) {
+  } else if (isError) {
     content = <ErrorMsg msg="There was an error" />;
-  }
-  if (!isLoading && !isError && products?.data?.length === 0) {
+  } else if (products?.data?.length === 0) {
     content = <ErrorMsg msg="No Products found!" />;
-  }
-  if (!isLoading && !isError && products?.data?.length > 0) {
+  } else if (products?.data?.length > 0) {
     let product_items = products.data;
-    if (activeTab === "All Collection") {
-      product_items = products.data;
-    } else if (activeTab === "Trending") {
-      product_items = products.data
-        .slice()
-        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-    } else if (activeTab === "beds") {
-      product_items = products.data.filter((p) => {
-        (p) =>p.category && p.category.parent === "beds"  
-      });
-  }
-   else if (activeTab === "Chairs") {
-      product_items = products.data.filter(
-        (p) =>p.category && p.category.name === "chairs"
-      );
-    } else {
-      product_items = products.data;
+
+    // Apply specific filters based on activeTab
+    switch (activeTab) {
+      case "Trending":
+        product_items = products.data.filter(p => p.status.toLowerCase().includes("trending"));
+        break;
+      case "beds":
+        product_items = products.data.filter(p => p.category_id === 3);
+        break;
+      case "chairs":
+        product_items = products.data.filter(p => p.category_id === 2);
+        break;
+      default:
+        // For "All Collection", no additional filtering needed
+        break;
     }
+
     content = (
       <>
         <div className="row align-items-end">
@@ -89,7 +101,7 @@ const ProductAreaTwo = () => {
             </div>
           </div>
           <div className="col-xl-6 col-lg-6">
-            <div className="tp-product-tab-2 tp-product-tab-3  tp-tab mb-50 text-center">
+            <div className="tp-product-tab-2 tp-product-tab-3 tp-tab mb-50 text-center">
               <div className="tp-product-tab-inner-3 d-flex align-items-center justify-content-center justify-content-lg-end">
                 <nav>
                   <div
@@ -126,7 +138,7 @@ const ProductAreaTwo = () => {
 
         <div className="row">
           {product_items.map((prd) => (
-            <div key={prd._id} className="col-lg-3 col-md-4 col-sm-6">
+            <div key={prd.id} className="col-lg-3 col-md-4 col-sm-6">
               <ProductItem product={prd} />
             </div>
           ))}
@@ -134,12 +146,11 @@ const ProductAreaTwo = () => {
       </>
     );
   }
+
   return (
-    <>
-      <section className="tp-best-area pb-60 pt-130">
-        <div className="container">{content}</div>
-      </section>
-    </>
+    <section className="tp-best-area pb-60 pt-130">
+      <div className="container">{content}</div>
+    </section>
   );
 };
 

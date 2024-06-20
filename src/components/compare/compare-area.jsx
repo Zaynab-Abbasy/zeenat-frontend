@@ -100,7 +100,7 @@ const CompareArea = () => {
                               allowFraction
                               size={16}
                               initialValue={
-                                item.reviews.length > 0
+                                item.reviews && item.reviews.length > 0
                                   ? item.reviews.reduce(
                                       (acc, review) => acc + review.rating,
                                       0

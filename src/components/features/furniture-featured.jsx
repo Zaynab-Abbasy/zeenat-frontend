@@ -1,57 +1,63 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-// internal
-import featured_1 from '@assets/img/product/featured/featured-1.jpg';
-import featured_2 from '@assets/img/product/featured/featured-2.png';
-import featured_3 from '@assets/img/product/featured/featured-3.png';
-
-
-
-// featured data 
-const featured_data = [
-  {
-    id: 1,
-    img: featured_1,
-    title: "Rist Rocking Chair" ,
-    subtitle: 'This rocking chair is a perfect pick for creating a living room arrangement that is unique and space saving.',
-    save: 72,
-  },
-  {
-    id: 2,
-    img: featured_2,
-    title: "Aleksandra Chair",
-    subtitle: ' Upgrade your interior style aesthetics by bringing this elegantly looking luxury lounge chair.',
-    save: 98,
-  },
-  {
-    id: 3,
-    img: featured_3,
-    title: "Faulkner Check Seating",
-    subtitle: 'Contemporary and stylish this checked line chair gives you the comfortable and splendid outside lounging.',
-    save: 133,
-  },
-]
 
 const FurnitureFeatured = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:5000/api/products/featured')
+      .then(response => response.json())
+      .then(data => setProducts(data.data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
+  const truncateDescription = (description) => {
+    // Trim description to two lines
+    const maxLength = 120; // Adjust as needed
+    if (description.length > maxLength) {
+      return `${description.substring(0, maxLength)}...`;
+    }
+    return description;
+  };
+
+  const toggleDescription = (item) => {
+    const index = products.findIndex(product => product.id === item.id);
+    const updatedProducts = [...products];
+    updatedProducts[index].showFullDescription = !updatedProducts[index].showFullDescription;
+    setProducts(updatedProducts);
+  };
+
   return (
     <>
       <section className="tp-featured-product-area pt-70 pb-150">
         <div className="container">
           <div className="row gx-0">
-            {featured_data.map(item => (
+            {products.map(item => (
               <div key={item.id} className="col-lg-4 col-md-6">
                 <div className="tp-featured-item-3 text-center">
                   <div className="tp-featured-thumb-3 d-flex align-items-end justify-content-center">
-                    <Image src={item.img} alt="featured image" />
+                    <Image src={item.img} alt="featured image" width={300} height={300} />
                   </div>
                   <div className="tp-featured-content-3">
                     <h3 className="tp-featured-title-3">
                       <Link href="/shop">{item.title}</Link>
                     </h3>
-                    <p>{item.subtitle}</p>
+                    <p>
+                      {item.showFullDescription
+                        ? item.description
+                        : truncateDescription(item.description)}
+                      {item.description.length > 120 && (
+                        <button
+                          className="toggle-description-btn"
+                          onClick={() => toggleDescription(item)}
+                        >
+                          {item.showFullDescription ? 'See less' : 'See more'}
+                        </button>
+                      )}
+                    </p>
                     <div className="tp-featured-price-3">
-                      <span>Save RS.{item.save}</span>
+                      <span>Save RS.{item.discount}</span>
                     </div>
                   </div>
                 </div>

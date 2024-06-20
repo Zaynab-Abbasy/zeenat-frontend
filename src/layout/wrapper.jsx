@@ -23,7 +23,7 @@ const Wrapper = ({ children }) => {
     dispatch(get_cart_products());
     dispatch(get_wishlist_products());
     dispatch(get_compare_products());
-    dispatch(initialOrderQuantity());
+    //dispatch(initialOrderQuantity());
   }, [dispatch]);
 
   return !authChecked ? (

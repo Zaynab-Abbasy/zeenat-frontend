@@ -7,18 +7,21 @@ import { Close, Minus, Plus } from "@/svg";
 import { add_cart_product, quantityDecrement, remove_product } from "@/redux/features/cartSlice";
 
 const CartItem = ({product}) => {
-  const {id, img,title,price, orderQuantity = 0 } = product || {};
+  const {id, img, title, price, orderQuantity = 0, quantity } = product || {};
 
   const dispatch = useDispatch();
 
     // handle add product
     const handleAddProduct = (prd) => {
       console.log("Adding product:", prd);
+      console.log("Current orderQuantity:", prd.orderQuantity);
+      console.log("Available quantity:", prd.quantity);
       dispatch(add_cart_product(prd))
     }
     // handle decrement product
     const handleDecrement = (prd) => {
       console.log("Decrementing product:", prd);
+      console.log("Current orderQuantity:", prd.orderQuantity);
       dispatch(quantityDecrement(prd))
     }
   

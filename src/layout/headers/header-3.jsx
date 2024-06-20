@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // internal
 import logo_white from '@assets/img/logo/logo-white.svg';
 import logo_dark from '@assets/img/logo/logo.svg';
-import logo_white1 from '@assets/img/logo/logo-white.jpeg'
+import logo_white1 from '@assets/img/logo/logo-white.png'
 import { CartTwo, Menu, Search, Wishlist } from '@/svg';
 import Menus from './header-com/menus';
 import useSticky from '@/hooks/use-sticky';
@@ -30,7 +30,7 @@ const HeaderThree = () => {
             <div className="container-fluid">
               <div className="row align-items-center">
                 <div className="col-xl-2 col-lg-2 col-6">
-                  <div className="logo">
+                  <div className="logo" style={{ marginLeft: '-100px' }}>
                     <Link href="/">
                       <Image className="logo-light" src={logo_white1} alt="logo" />
                       <Image className="logo-dark" src={logo_white1} alt="logo" />
@@ -59,12 +59,9 @@ const HeaderThree = () => {
                     </div>
                     <div className="tp-header-action-item d-none d-sm-block">
                     <Link href="/cart" className="tp-header-action-btn">
-                      {/* <button onClick={() => dispatch(openCartMini())} type="button" className="tp-header-action-btn cartmini-open-btn">
-                      <Link href="/cart" onClick={handleCloseCartMini} className="tp-btn mb-10 w-100"> view cart</Link> */}
                         <CartTwo />
                         <span className="tp-header-action-badge">{quantity}</span>
-                        </Link>
-                      {/* </button> */}
+                      </Link>
                     </div>
                     <div className="tp-header-action-item d-lg-none">
                       <button onClick={() => setIsCanvasOpen(true)} type="button" className="tp-header-action-btn tp-offcanvas-open-btn">

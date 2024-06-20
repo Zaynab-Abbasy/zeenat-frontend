@@ -13,7 +13,7 @@ import CartMiniSidebar from '@/components/common/cart-mini-sidebar';
 import { CartTwo, Compare, Facebook, Menu, PhoneTwo, Wishlist, Search } from '@/svg';
 import useSearchFormSubmit from '@/hooks/use-search-form-submit';
 import OffCanvas from '@/components/common/off-canvas';
-import logo_white1 from '@assets/img/logo/logo-white.jpeg'
+import logo_white1 from '@assets/img/logo/logo-white.png'
 const HeaderTwo = ({ style_2 = false }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
   const [isOffCanvasOpen, setIsCanvasOpen] = useState(false);
@@ -60,7 +60,7 @@ const HeaderTwo = ({ style_2 = false }) => {
               <div className="tp-mega-menu-wrapper p-relative">
                 <div className="row align-items-center">
                   <div className="col-xl-2 col-lg-5 col-md-5 col-sm-4 col-6">
-                    <div className="logo">
+                    <div className="logo" style={{ marginLeft: '-170px', width:'5px' }}>
                       <Link href="/">
                         <Image src={logo_white1} alt="logo" priority />
                       </Link>

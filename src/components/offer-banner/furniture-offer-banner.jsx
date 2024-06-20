@@ -21,10 +21,10 @@ const FurnitureOfferBanner = () => {
                     <div className="tp-collection-content">
                         <span>Decor Collection</span>
                         <h3 className="tp-collection-title">
-                          <Link href="/shop">Tabletop Decor and <br/> Center pieces</Link>
+                          <Link href="/shop?category=decor">Tabletop Decor and <br/> Center pieces</Link>
                         </h3>
                         <div className="tp-collection-btn">
-                          <Link href="/shop" className="tp-btn">
+                          <Link href="/shop?category=decor" className="tp-btn">
                               Discover Now 
                               {" "}<ArrowRightSmTwo/>
                           </Link>
@@ -40,7 +40,7 @@ const FurnitureOfferBanner = () => {
                           <Link href="/shop">Wall Art and <br/> Mirrors</Link>
                         </h3>
                         <div className="tp-collection-btn-1">
-                          <Link href="/shop" className="tp-link-btn-line">Shop Collection</Link>
+                          <Link href="/shop?category=decor" className="tp-link-btn-line">Shop Collection</Link>
                         </div>
                     </div>
                   </div>

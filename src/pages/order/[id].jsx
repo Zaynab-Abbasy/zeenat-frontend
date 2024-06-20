@@ -9,7 +9,7 @@ import SEO from "@/components/seo";
 import Wrapper from "@/layout/wrapper";
 import HeaderTwo from "@/layout/headers/header-2";
 import Footer from "@/layout/footers/footer";
-import logo from '@assets/img/logo/logo-white.jpeg'
+import logo from '@assets/img/logo/logo-white.png'
 import ErrorMsg from "@/components/common/error-msg";
 import { useGetUserOrderByIdQuery } from "@/redux/features/order/orderApi";
 import PrdDetailsLoader from "@/components/loader/prd-details-loader";
@@ -52,7 +52,7 @@ const SingleOrder = ({ params }) => {
                     <div className="invoice__header pb-20">
                       <div className="row align-items-end">
                         <div className="col-md-4 col-sm-6">
-                          <div className="invoice__left">
+                          <div className="invoice__left" style={{ marginLeft: '-100px' }}>
                             <Image src={logo} alt="logo" />
                             <p>Block 6, street 01 <br /> F6-4 isb </p>
                           </div>
